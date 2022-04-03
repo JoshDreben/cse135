@@ -29,18 +29,44 @@
   main {
     padding: 1rem;
   }
-
+  table,th,td{
+	  border: 1px solid;
+  }
+  th, td{
+	  padding: 0.25rem;
+  }
+  table {
+	  text-align: left;
+	  margin-top: 2rem;
+	  border-collapse: collapse;
+	  width: 100%;
+  }
+  tr:nth-child(even) {
+	  background-color: #f2f2f2;
+  }
 </style>
 
 <body>
   <div id="heading">
 	  <h1>CSE 135 HW1 Lives!</h1>
-	  <h2>Author: <a href="/josh.html" target="_">Joshua Dreben!</a></h2>
+	  <h2>Author: <a href="/members/josh.html" target="_">Joshua Dreben!</a></h2>
   </div>
   <main>
     <script>
       document.write(`Live @ ${new Date()}`);
     </script>
+	<table>
+		<tr>
+			<th>Homework</th>
+			<th>Date</th>
+			<th>Files/Links</th>
+		</tr>
+		<tr>
+			<td>HW #1</td>
+			<td>Apr 3, 2022</td>
+			<td></td>
+		</tr>
+	</table>
   </main>
 
 </body>
