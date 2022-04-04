@@ -14,3 +14,7 @@ password: CSE135Admin
 ## GZIP/Deflate compression
 
 after enabling "deflate" in apache, all my files showed as being smaller in size (amount of bytes) than before. 
+
+## Server Obfuscation
+
+to change the server header, I downloaded and configured an apache2 mod called security2 that allowed me to add only two lines of configuration to the apache2.conf file to change the server header response to anything I wanted.
