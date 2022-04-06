@@ -5,6 +5,10 @@
 ssh command: ssh grader@143.198.58.12
 password: CSE135Grader
 
+## Website URL
+
+url: https://josh-cse135.site
+
 ## Deploy Work Flow
 
 git add .
