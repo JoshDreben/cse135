@@ -1,5 +1,10 @@
 # Welcome to Josh's CSE135 Website
 
+## SSH Grader Info
+
+ssh command: ssh grader@143.198.58.12
+password: CSE135Grader
+
 ## Deploy Work Flow
 
 git add .
@@ -8,7 +13,7 @@ git commit -m "_your message here_"
 
 git push && git push prod main
 
-## Apache User/Password Login Info
+## Website User/Password Login Info
 
 username: admin
 
