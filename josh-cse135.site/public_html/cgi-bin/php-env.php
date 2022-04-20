@@ -2,6 +2,7 @@
 
 header('Cache-Control: no-cache, must-revalidate');
 
+$envv = getenv();
 ?>
 
 <html>
@@ -10,7 +11,13 @@ header('Cache-Control: no-cache, must-revalidate');
 </head>
 
 <body>
-  <h1>PHP Environment Variables by JOSH!</h1>
+
+  <?php
+  foreach ($envv as $key => $value) {
+	echo "<p>{$key}: {$value}</p>";
+  }
+  ?>
+  <!-- <h1>PHP Environment Variables by JOSH!</h1>
   <p>APACHE_RIN_DIR: <?php echo getenv('APACHE_RUN_DIR');?></p>
   <p>APACHE_PID_FILE: <?php echo getenv('APACHE_PID_FILE');?></p>
   <p>JOURNAL_STREAM: <?php echo getenv('JOURNAL_STREAM');?></p>
@@ -20,7 +27,7 @@ header('Cache-Control: no-cache, must-revalidate');
   <p>LANG: <?php echo getenv('LANG');?></p>
   <p>APACHE_RUN_USER: <?php echo getenv('APACHE_RUN_USER');?></p>
   <p>APACHE_LOG_DIR: <?php echo getenv('APACHE_LOG_DIR');?></p>
-  <p>PWD: <?php echo getenv('PWD');?></p>
+  <p>PWD: <?php echo getenv('PWD');?></p> -->
   <?php 
   foreach ($_SERVER  as $key => $value) {
 	  echo "<p>{$key}: {$value}</p>";
