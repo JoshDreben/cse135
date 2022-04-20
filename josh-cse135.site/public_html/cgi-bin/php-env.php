@@ -13,7 +13,9 @@ header('Cache-Control: no-cache, must-revalidate');
   <h1>PHP Environment Variables by JOSH!</h1>
   <p>
   <?php
-    echo getenv();
+    foreach ($_ENV as $key => $val) {
+      echo "{$key}: {$val}";
+    }
   ?>
   </p>
 </body
