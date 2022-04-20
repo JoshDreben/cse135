@@ -12,9 +12,7 @@ header('Cache-Control: no-cache, must-revalidate');
 <body>
   <h1>PHP Environment Variables by JOSH!</h1>
   <?php
-    foreach ($_ENV as $key => $val) {
-      echo "<p>{$key}: {$val}</p>";
-    }
+      echo "<p>{$_ENV[APACHE_RUN_DIR]}</p>";
   ?>
 </body>
 </html>
