@@ -23,7 +23,7 @@ header('Cache-Control: no-cache, must-revalidate');
   <p>PWD: <?php echo getenv('PWD');?></p>
   <?php 
   foreach ($_SERVER  as $key => $value) {
-	  echo "{$key}: {$value}";
+	  echo "<p>{$key}: {$value}</p><br>";
   }
   ?>
 </body>
