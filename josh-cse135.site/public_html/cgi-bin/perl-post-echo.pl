@@ -5,8 +5,8 @@ print "Content-type: text/html \n\n";
 # print HTML file top
 print <<END;
 <!DOCTYPE html>
-<html><head><title>POST Request Echo</title>
-</head><body><h1 align="center">POST Request Echo</h1>
+<html><head><title>POST Request Echo by JOSH!</title>
+</head><body><h1 align="center">POST Request Echo by JOSH!</h1>
 <hr>
 END
 

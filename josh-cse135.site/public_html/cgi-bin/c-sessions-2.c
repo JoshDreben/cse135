@@ -10,9 +10,9 @@ int main(int argc, char **argv, char **envp)
 
   // Body - HTML
   printf("<html>");
-  printf("<head><title>C Sessions</title></head>\n");
+  printf("<head><title>C Sessions by JOSH!</title></head>\n");
   printf("<body>");
-  printf("<h1>C Sessions Page 2</h1>");
+  printf("<h1>C Sessions Page 2 by JOSH!</h1>");
   printf("<table>");
 
   if (getenv("HTTP_COOKIE") != NULL && strcmp(getenv("HTTP_COOKIE"), "destroyed"))

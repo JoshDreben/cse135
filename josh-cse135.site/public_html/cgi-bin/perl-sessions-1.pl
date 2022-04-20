@@ -18,11 +18,11 @@ $session->param("username", $name);
 
 print "<html>";
 print "<head>";
-print "<title>Perl Sessions</title>";
+print "<title>Perl Sessions by JOSH!</title>";
 print "</head>";
 print "<body>";
 
-print "<h1>Perl Sessions Page 1</h1>";
+print "<h1>Perl Sessions Page 1 by JOSH!</h1>";
 
 if ($name){
 	print("<p><b>Name:</b> $name");

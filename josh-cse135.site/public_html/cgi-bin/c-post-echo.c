@@ -7,8 +7,8 @@ int main(int argc, char **argv, char **envp)
   // Print HTML header
   printf("Cache-Control: no-cache\n");
   printf("Content-type: text/html\n\n");
-  printf("<html><head><title>POST Message Body</title></head>\
-	<body><h1 align=center>POST Message Body</h1>\
+  printf("<html><head><title>POST Message Body by JOSH!</title></head>\
+	<body><h1 align=center>POST Message Body by JOSH!</h1>\
   	<hr/>\n");
 
   printf("Message Body: %s\n<br/>", fgets(str, 1000, stdin));

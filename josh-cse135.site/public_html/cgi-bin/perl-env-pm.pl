@@ -8,9 +8,9 @@ print "Cache-Control: no-cache\n";
 print header;
 
 # CGI.pm Method
-print start_html("Environment Variables");
+print start_html("Environment Variables by JOSH!");
 
-print "<h1 align='center'>Environment Variables</h1><hr />";
+print "<h1 align='center'>Environment Variables by JOSH!</h1><hr />";
 
 # Loop through all of the environment variables, then print each variable and its value
 foreach my $key (sort(keys(%ENV))) {
