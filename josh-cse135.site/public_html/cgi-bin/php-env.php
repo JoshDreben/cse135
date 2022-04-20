@@ -16,5 +16,5 @@ header('Cache-Control: no-cache, must-revalidate');
       echo "<p>{$key}: {$val}</p>";
     }
   ?>
-</body
+</body>
 </html>
