@@ -12,7 +12,7 @@ header('Cache-Control: no-cache, must-revalidate');
 <body>
   <h1>PHP Environment Variables by JOSH!</h1>
   <?php
-      echo "<p>{$_ENV[APACHE_RUN_DIR]}</p>";
+      echo getenv('APACHE_RUN_DIR');
   ?>
 </body>
 </html>
