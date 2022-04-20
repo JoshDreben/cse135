@@ -11,10 +11,10 @@ header('Cache-Control: no-cache, must-revalidate');
 
 <body>
   <h1>PHP Environment Variables by JOSH!</h1>
-  <p>
   <?php
-    echo $_ENV; 
+    foreach ($_ENV as $e){
+      echo `<p>$_e</p>`;
+    }
   ?>
-  </p>
 </body
 </html>
