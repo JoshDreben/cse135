@@ -13,7 +13,7 @@ $envv = getenv();
 <body>
 
   <h1>PHP Environment Variables by JOSH!</h1>
-  <h2>Environment Variables:<h2>
+  <h2>Environment Variables:</h2>
   <?php
   foreach ($envv as $key => $value) {
 	echo "<p>{$key}: {$value}</p>";
