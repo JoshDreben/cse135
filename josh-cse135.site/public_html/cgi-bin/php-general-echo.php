@@ -13,7 +13,7 @@ $query = $_SERVER['QUERY_STRING'];
 	<p>Protocol: <?php  echo getenv('SERVER_PROTOCOL') ?></p>
 	<p>Request Method: <?php  echo getenv('REQUEST_METHOD') ?></p>
 	<p>Query String: <?php  echo $query ?></p>
-	<p> Message: Body:</p>
+	<p> Message Body:</p>
 	<?php
 		foreach ($_GET as $key => $value) {
 			echo "<p>{$key}: {$value}</p>";
