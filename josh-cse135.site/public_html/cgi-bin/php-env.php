@@ -13,7 +13,7 @@ header('Cache-Control: no-cache, must-revalidate');
   <h1>PHP Environment Variables by JOSH!</h1>
   <p>
   <?php
-    echo phpinfo(); 
+    echo $_ENV; 
   ?>
   </p>
 </body
