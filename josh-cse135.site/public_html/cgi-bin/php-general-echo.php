@@ -1,5 +1,5 @@
 <?php
-header('Cache-Control: no-cache, must-revalidate');
+header('Cache-control: no-cache');
 
 $query = $_SERVER['QUERY_STRING'];
 
