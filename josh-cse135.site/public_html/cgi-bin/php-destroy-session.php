@@ -1,6 +1,8 @@
 <?php
 	header('Content-type: text/html');
+	setcookie (session_name(), "", time()-3600);
 	session_destroy();
+	session_write_close();
 ?>
 
 <html>
