@@ -3,7 +3,8 @@
 
 	session_start();
 
-	$name = $_SESSION['username'] || $_POST['username'];
+
+	$name = isset($_SESSION['username']) ? $_SESSION['username'] : $_POST['username'];
 	$_SESSION['username'] = $name;
 ?>
 
