@@ -1,6 +1,6 @@
 <?php
-	header('Content-type: text/html');
-	setcookie (session_name(), "", time()-3600);
+	header('Cache-control: no-cache');
+	setcookie (session_id(), "", time()-3600);
 	session_destroy();
 	session_write_close();
 ?>
