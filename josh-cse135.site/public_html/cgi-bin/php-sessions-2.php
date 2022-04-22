@@ -8,7 +8,7 @@ $_SESSION['username'] = $name;
 
 <html>
 <head>
-	<title>PHP Sessions Page 2 by JOSH!<title>
+	<title>PHP Sessions Page 2 by JOSH!</title>
 </head>
 <body>
 	<h1>PHP Sessions Page 2 by JOSH!</h1>
