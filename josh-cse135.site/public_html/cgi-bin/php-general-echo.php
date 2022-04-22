@@ -15,12 +15,7 @@ $query = $_SERVER['QUERY_STRING'];
 	<p>Query String: <?php  echo $query ?></p>
 	<p> Message Body:</p>
 	<?php
-		foreach ($_GET as $key => $value) {
-			echo "<p>{$key}: {$value}</p>";
-		}
-	?>
-	<?php
-		foreach ($_POST as $key => $value) {
+		foreach ($_REQUEST as $key => $value) {
 			echo "<p>{$key}: {$value}</p>";
 		}
 	?>
