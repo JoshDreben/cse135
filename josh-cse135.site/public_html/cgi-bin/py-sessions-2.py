@@ -11,11 +11,8 @@ if "HTTP_COOKIE" in os.environ:
       if key == "username":
          name = value
 
-if (name == ""):
-    name = "Name Not Set!"
-
 print("Cache-control: no-cache")
-print("Content-type: text/html")
+print("Content-type: text/html\r\n\r\n")
 
 
 
