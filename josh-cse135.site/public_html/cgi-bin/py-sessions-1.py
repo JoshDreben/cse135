@@ -7,11 +7,10 @@ form = cgi.FieldStorage()
 
 name = ""
 
-if os.environ.has_key('HTTP_COOKIE'):
-   for cookie in map(strip, split(environ['HTTP_COOKIE'], ';')):
-      (key, value ) = split(cookie, '=');
-      if key == "username":
-         name = value
+for cookie in map(strip, split(os.environ['HTTP_COOKIE'], ';')):
+  (key, value ) = split(cookie, '=');
+  if key == "username":
+     name = value
 
 
 print("Content-type: text/html\r\n")
