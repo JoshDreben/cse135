@@ -15,7 +15,7 @@ if os.environ.has_key('HTTP_COOKIE'):
 
 
 print("Content-type: text/html\r\n")
-print("Set-Cookie:username ="+str(form["username"])+";\r\n\r\n"))
+print("Set-Cookie:username ="+str(form["username"])+";\r\n\r\n")
 
 
 if (name == ""):
