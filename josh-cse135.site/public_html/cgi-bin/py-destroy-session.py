@@ -6,7 +6,7 @@ form = cgi.FieldStorage()
 
 
 print("Cache-control: no-cache")
-print("Set-Cookie:username ="+name+";Path=/;Expires = Thu, 01 Jan 1970 00:00:00 GMT")
+print("Set-Cookie:username =;Path=/;Expires = Thu, 01 Jan 1970 00:00:00 GMT")
 print("Content-type: text/html\n\n")
 
 
