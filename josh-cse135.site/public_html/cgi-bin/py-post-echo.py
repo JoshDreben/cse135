@@ -1,20 +1,19 @@
 #!/usr/bin/python3
 
-import cgi 
+import cgi
 import os
 
-form = cgi.FieldStorage() 
+form = cgi.FieldStorage()
 
 
 print ("Content-type:text/html\r\n\r\n")
 print ("<html>")
 print ("<head>")
-print ("<title>Python Get Echo by JOSH!</title>")
+print ("<title>Python POST Echo by JOSH!</title>")
 print ("</head>")
 print ("<body>")
-print ("<h1>Python Get Echo by JOSH!</h1>")
-print ("<p>Query String:" + str(os.environ["QUERY_STRING"]) + "</p>")
-print ("<p>Parameters: </p>")
+print ("<h1>POST Echo by JOSH!</h1>")
+print ("<p>Message Body: </p>")
 for key in form.keys():
     print ("<p>" + str(key) + ": " + str(form[str(key)].value) + "</p>")
 print ("</body>")
