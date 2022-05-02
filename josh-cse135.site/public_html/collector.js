@@ -21,6 +21,7 @@ function load() {
 	static["windowOuterHeight"] = window.outerHeight;
 	static["screenWidth"] = window.screen.width;
 	static["screenHeight"] = window.screen.height;
+	static["cssEnabled"] = document.getElementById('heading').style.display;
 	console.log(static);
 }
 
