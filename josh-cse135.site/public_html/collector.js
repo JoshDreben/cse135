@@ -4,7 +4,7 @@ var activity = {};
 
 
 function imagesEnabled() {
-	if ((document.getElementById('imageFlag').offsetWidth == 1 && document.getElementById('imageFlag').readyState == 'complete') || (document.getElementById('imageFlag').offsetWidth == 1 && document.getElementById('imageFlag').readyState==undefined)) {
+	if ((document.getElementById('imageFlag').offsetWidth == 1)) {
 		return true;
 	} else {
 		return false;
