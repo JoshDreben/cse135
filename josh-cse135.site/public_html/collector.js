@@ -12,7 +12,7 @@ function imagesEnabled() {
 }
 
 function cssEnabled () {
-	static["cssEnabled"] = document.getElementById("heading").style.display;
+	static["cssEnabled"] = window.getComputedStyle(document.getElementById('heading'));
 }
 
 function load() {
