@@ -25,6 +25,9 @@ function load() {
 	static["windowOuterHeight"] = window.outerHeight;
 	static["screenWidth"] = window.screen.width;
 	static["screenHeight"] = window.screen.height;
+	if (window.navigator.connection !== null) {
+		static["connectionType"] = window.navigator.connection.type;
+	}
 	console.log(static);
 }
 
