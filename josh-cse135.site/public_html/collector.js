@@ -26,7 +26,7 @@ function load() {
 	static["screenWidth"] = window.screen.width;
 	static["screenHeight"] = window.screen.height;
 	let connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-	if (window.navigator.connection !== null) {
+	if (connection != undefined) {
 		static["connectionType"] = connection.effectiveType;
 	}
 	console.log(static);
