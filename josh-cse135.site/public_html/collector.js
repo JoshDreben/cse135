@@ -50,5 +50,5 @@ function collectorCheck() {
   if (window.performance.getEntriesByType("navigation")[0].loadEventEnd != 0) {
     collectorLoad();
   }
-  else setTimeout(check, 0); //put it back in queue
+  else setTimeout(collectorCheck, 0); //put it back in queue
 }
