@@ -35,7 +35,10 @@ function load() {
 	}
 	static["jsEnabled"] = true;
 	console.log(static);
-
+	imagesEnabled();
+	cssEnabled();
+	showNavDetails();
 }
+load();
 
-window.onload = load();
+//window.onload = load();
