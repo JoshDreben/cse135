@@ -31,7 +31,7 @@
     <script>
       document.write(`Live @ ${new Date()}`);
     </script>
-	<form onsubmit="this.js_enabled.value=1;return true;">
+	<form method="GET" action="/api" onsubmit="this.js_enabled.value=1;return true;">
 		<input type="hidden" name="js_enabled" value="0">
 		<input type="submit" value="go">
 	</form>
