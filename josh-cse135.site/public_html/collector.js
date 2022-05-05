@@ -31,6 +31,9 @@ function load() {
 	}
 	static["jsEnabled"] = true;
 	console.log(static);
+	console.log(performance.getEntriesByType("navigation"));
+
+
 }
 
 window.onload = load();
