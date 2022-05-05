@@ -43,3 +43,5 @@ function collectorLoad() {
 	console.log(collectorStatic);
 }
 
+
+window.onload = collectorLoad();
