@@ -37,11 +37,11 @@ function collectorLoad() {
 	imagesEnabled();
 	cssEnabled();
 
-	collectorStatic["timing"] = window.performance.timing;
-	collectorStatic["loadStart"] = window.performance.timing.loadEventStart;
-	collectorStatic["loadEnd"] = window.performance.timing.loadEventEnd;
-	collectorStatic["totalLoad"] = collectorStatic["loadEnd"] - collectorStatic["loadStart"];
-	console.log(collectorStatic);
+	collectorPerformance["timing"] = window.performance.timing;
+	collectorPerformance["loadStart"] = window.performance.timing.loadEventStart;
+	collectorPerformance["loadEnd"] = window.performance.timing.loadEventEnd;
+	collectorPerformance["totalLoad"] = collectorPerformance["loadEnd"] - collectorPerformance["loadStart"];
+	console.log(collectorStatic, collectorPerformance);
 }
 
 window.addEventListener('load', collectorCheck);
