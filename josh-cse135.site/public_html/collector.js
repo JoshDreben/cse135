@@ -1,18 +1,18 @@
-var static = {};
-var performance = {};
-var activity = {};
+var collectorStatic = {};
+var collectorPerformance = {};
+var collectorActivity = {};
 
 
 function imagesEnabled() {
 	if ((document.getElementById('imageFlag').offsetWidth == 1)) {
-		static["imagesEnabled"] = true;
+		collectorStatic["imagesEnabled"] = true;
 	} else {
-		static["imagesEnabled"] = false;
+		collectorStatic["imagesEnabled"] = false;
 	}
 }
 
 function cssEnabled () {
-	static["cssEnabled"] = window.getComputedStyle(document.getElementById('heading')).display === 'flex' ? true : false;
+	collectorStatic["cssEnabled"] = window.getComputedStyle(document.getElementById('heading')).display === 'flex' ? true : false;
 }
 
 function showNavDetails() {
@@ -20,23 +20,23 @@ function showNavDetails() {
 }
 
 function collectorLoad() {
-	static["userAgent"] = window.navigator.userAgent;
-	static["language"] = window.navigator.language;
-	static["acceptCookies"] = window.navigator.cookieEnabled;
-	static["windowInnerWidth"] = window.innerWidth;
-	static["windowInnerHeight"] = window.innerHeight;
-	static["windowOuterWidth"] = window.outerWidth;
-	static["windowOuterHeight"] = window.outerHeight;
-	static["screenWidth"] = window.screen.width;
-	static["screenHeight"] = window.screen.height;
+	collectorStatic["userAgent"] = window.navigator.userAgent;
+	collectorStatic["language"] = window.navigator.language;
+	collectorStatic["acceptCookies"] = window.navigator.cookieEnabled;
+	collectorStatic["windowInnerWidth"] = window.innerWidth;
+	collectorStatic["windowInnerHeight"] = window.innerHeight;
+	collectorStatic["windowOuterWidth"] = window.outerWidth;
+	collectorStatic["windowOuterHeight"] = window.outerHeight;
+	collectorStatic["screenWidth"] = window.screen.width;
+	collectorStatic["screenHeight"] = window.screen.height;
 	let connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 	if (connection != undefined) {
-		static["connectionType"] = connection.effectiveType;
+		collectorStatic["connectionType"] = connection.effectiveType;
 	}
-	static["jsEnabled"] = true;
+	collectorStatic["jsEnabled"] = true;
 	imagesEnabled();
 	cssEnabled();
 //	showNavDetails();
-	console.log(static);
+	console.log(collectorStatic);
 }
 
