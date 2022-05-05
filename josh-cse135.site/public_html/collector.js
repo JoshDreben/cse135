@@ -37,6 +37,9 @@ function collectorLoad() {
 	imagesEnabled();
 	cssEnabled();
 	collectorStatic["timing"] = window.performance.timing;
+	collectorStatic["loadStart"] = window.performance.timing.loadEventStart;
+	collectorStatic["loadEnd"] = window.performance.timing.loadEventEnd;
+	collectorStatic["totalLoad"] = collectorStatic["loadEnd"] - collectorStatic["loadStart"];
 	console.log(collectorStatic);
 }
 
