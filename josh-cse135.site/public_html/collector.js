@@ -36,6 +36,7 @@ function collectorLoad() {
 	collectorStatic["jsEnabled"] = true;
 	imagesEnabled();
 	cssEnabled();
+
 	collectorStatic["timing"] = window.performance.timing;
 	collectorStatic["loadStart"] = window.performance.timing.loadEventStart;
 	collectorStatic["loadEnd"] = window.performance.timing.loadEventEnd;
@@ -43,6 +44,11 @@ function collectorLoad() {
 	console.log(collectorStatic);
 }
 
-window.onload = collectorLoad();
+window.addEventListener('load', check)
 
-
+function check() {
+  if (window.performance.getEntriesByType("navigation")[0].loadEventEnd && other_values()) {
+    collectorLoad()
+  }
+  else setTimeout(check, 0); //put it back in queue
+}
