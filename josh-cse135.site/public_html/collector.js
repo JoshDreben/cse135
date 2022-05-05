@@ -2,6 +2,8 @@ var collectorStatic = {};
 var collectorPerformance = {};
 var collectorActivity = {};
 
+var collectorMouseCoords = [];
+
 
 function imagesEnabled() {
 	if ((document.getElementById('imageFlag').offsetWidth == 1)) {
@@ -58,7 +60,9 @@ let c_pointerY = -1;
 document.onmousemove = function(event) {
 	c_pointerX = event.pageX;
 	c_pointerY = event.pageY;
-	console.log('Cursor at: '+c_pointerX+', '+c_pointerY);
+	//console.log('Cursor at: '+c_pointerX+', '+c_pointerY);
+	collectorMouseCoords.push([c_pointerX, c_pointerY]);
+
 }
 //setInterval(pointerCheck, 100);
 //function pointerCheck() {
