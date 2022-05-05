@@ -22,12 +22,6 @@
 </head>
 
 <body onload="imagesEnabled();cssEnabled();">
-  <noscript>
-	  <form action="" method="POST">
-		  <p>Looks like you have javascript disabled :(</p>
-		  <button type="submit">Click this to let me know so I can make this site better for you!</button>
-	  </form>
-  </noscript>
   <div id="heading">
 	  <h1>CSE 135 HW1 Lives!</h1>
 	  <h2>Author: <a href="/members/josh.html">Josh Dreben</a></h2>
@@ -37,6 +31,12 @@
     <script>
       document.write(`Live @ ${new Date()}`);
     </script>
+	<noscript>
+		<form action="" method="POST">
+		  <p>Looks like you have javascript disabled :(</p>
+		  <button type="submit">Click this to let me know so I can make this site better for you!</button>
+	  </form>
+	</noscript>
 	<table>
 		<tr>
 			<th>Homework</th>
