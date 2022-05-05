@@ -61,5 +61,5 @@ document.onmousemove = function(event) {
 }
 setInterval(pointerCheck, 100);
 function pointerCheck() {
-	console.log('Cursor at: '+pointerX+', '+pointerY);
+	console.log('Cursor at: '+c_pointerX+', '+c_pointerY);
 }
