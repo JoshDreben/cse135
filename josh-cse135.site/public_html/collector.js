@@ -40,4 +40,4 @@ function load() {
 	console.log(static);
 }
 
-//window.onload = load();
+window.onload = load();
