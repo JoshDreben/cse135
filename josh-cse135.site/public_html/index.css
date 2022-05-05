@@ -5,7 +5,7 @@
   }
 
   .nojs{
-	  display: hidden;
+	  display: none;
   }
   body {
     width: 100vw;
