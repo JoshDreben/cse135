@@ -29,6 +29,7 @@ function load() {
 	if (connection != undefined) {
 		static["connectionType"] = connection.effectiveType;
 	}
+	static["jsEnabled"] = true;
 	console.log(static);
 }
 
