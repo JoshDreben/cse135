@@ -57,12 +57,22 @@ function collectorCheck() {
 
 let c_pointerX = -1;
 let c_pointerY = -1;
+let c_clickPointerX = -1;
+let c_clickPointerY = -1;
+let c_clickButton = null;
 document.onmousemove = function(event) {
 	c_pointerX = event.pageX;
 	c_pointerY = event.pageY;
 	//console.log('Cursor at: '+c_pointerX+', '+c_pointerY);
 	collectorMouseCoords.push([c_pointerX, c_pointerY]);
 
+}
+
+document.onmousedown = function(event) {
+	c_clickPointerX = event.pageX;
+	c_clickPointerY = event.pageY;
+	c_clickButton  = event.button;
+	console.log(c_clickPointerX, c_clickPointerY, c_clickButton);
 }
 setInterval(updateMouseCoords, 1000);
 function updateMouseCoords() {
