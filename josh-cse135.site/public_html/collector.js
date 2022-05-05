@@ -36,7 +36,7 @@ function load() {
 	static["jsEnabled"] = true;
 	imagesEnabled();
 	cssEnabled();
-	showNavDetails();
+//	showNavDetails();
 	console.log(static);
 }
 
