@@ -4,6 +4,7 @@ var collectorActivity = {};
 
 var collectorMouseCoords = [];
 var collectorMouseClicks = [];
+var collectorScrolls = [];
 
 
 function imagesEnabled() {
@@ -60,6 +61,8 @@ let c_pointerX = -1;
 let c_pointerY = -1;
 let c_clickPointerX = -1;
 let c_clickPointerY = -1;
+let c_scrollPointerX = -1;
+let c_scrollPointerY = -1;
 let c_clickButton = null;
 document.onmousemove = function(event) {
 	c_pointerX = event.pageX;
@@ -75,8 +78,13 @@ document.onmousedown = function(event) {
 	c_clickButton  = event.button;
 	collectorMouseClicks.push([c_clickPointerX, c_clickPointerY, c_clickButton])
 }
+
+document.onscroll = function (event) {
+	c_scrollPointerX = event.pageX;
+	c_scrollPointerY = event.pageY;
+	collectorScrolls.push([c_scrollPointerX, c_scrollPointerY]);
+}
 setInterval(updateMouseCoords, 1000);
 function updateMouseCoords() {
-	console.log('Pushing mousemov coord array with length: ', collectorMouseCoords.length);
-	console.log('Pushing mouseclick coord array with length: ', collectorMouseClicks.length);
+	console.log('Pushing mousemov coord array with length: ', collectorMouseCoords.length, '\n Pushing mouseclick coord array with length: ', collectorMouseClicks.length, '\n Pushing scroll coord array with length: ', collectorScrolls.length);
 }
