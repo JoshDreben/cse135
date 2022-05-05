@@ -15,6 +15,15 @@ function cssEnabled () {
 	static["cssEnabled"] = window.getComputedStyle(document.getElementById('heading')).display === 'flex' ? true : false;
 }
 
+function showNavDetails() {
+	function showNavigationDetails() {
+		// Get the first entry
+		const [entry] = performance.getEntriesByType("navigation");
+		// Show it in a nice table in the developer console
+		console.table(entry.toJSON());
+	}
+}
+
 function load() {
 	static["userAgent"] = window.navigator.userAgent;
 	static["language"] = window.navigator.language;
@@ -31,8 +40,6 @@ function load() {
 	}
 	static["jsEnabled"] = true;
 	console.log(static);
-	console.log(performance.getEntriesByType("navigation"));
-
 
 }
 
