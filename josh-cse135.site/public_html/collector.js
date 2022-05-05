@@ -34,10 +34,10 @@ function load() {
 		static["connectionType"] = connection.effectiveType;
 	}
 	static["jsEnabled"] = true;
-	console.log(static);
 	imagesEnabled();
 	cssEnabled();
 	showNavDetails();
+	console.log(static);
 }
 load();
 
