@@ -19,7 +19,7 @@ function showNavDetails() {
 	console.log(window.performance.getEntriesByType("navigation"));
 }
 
-function load() {
+function collectorLoad() {
 	static["userAgent"] = window.navigator.userAgent;
 	static["language"] = window.navigator.language;
 	static["acceptCookies"] = window.navigator.cookieEnabled;
@@ -40,4 +40,3 @@ function load() {
 	console.log(static);
 }
 
-window.onload = load();
