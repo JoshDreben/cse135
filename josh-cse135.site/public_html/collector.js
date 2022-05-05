@@ -43,4 +43,6 @@ function collectorLoad() {
 	console.log(collectorStatic);
 }
 
+let c_body = document.getElementsByTagName('body');
+c_body.onloadend = collectorLoad();
 
