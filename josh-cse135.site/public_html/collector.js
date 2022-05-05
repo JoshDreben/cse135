@@ -36,7 +36,7 @@ function collectorLoad() {
 	collectorStatic["jsEnabled"] = true;
 	imagesEnabled();
 	cssEnabled();
-//	showNavDetails();
+	showNavDetails();
 	console.log(collectorStatic);
 }
 
