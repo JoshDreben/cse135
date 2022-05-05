@@ -44,4 +44,3 @@ function collectorLoad() {
 }
 
 
-window.onload = collectorLoad();
