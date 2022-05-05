@@ -31,11 +31,10 @@
     <script>
       document.write(`Live @ ${new Date()}`);
     </script>
-	<noscript>
-		<form action="" method="POST">
-		  <p>Looks like you have javascript disabled :(</p>
-		  <button type="submit">Click this to let me know so I can make this site better for you!</button>
-	  </form>
+	<form onsubmit="this.js_enabled.value=1;return true;">
+		<input type="hidden" name="js_enabled" value="0">
+		<input type="submit" value="go">
+	</form>
 	</noscript>
 	<table>
 		<tr>
