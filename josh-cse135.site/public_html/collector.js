@@ -36,7 +36,7 @@ function collectorLoad() {
 	collectorStatic["jsEnabled"] = true;
 	imagesEnabled();
 	cssEnabled();
-	showNavDetails();
+	collectorStatic["timing"] = window.performance.timing;
 	console.log(collectorStatic);
 }
 
