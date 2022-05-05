@@ -3,6 +3,7 @@ var collectorPerformance = {};
 var collectorActivity = {};
 
 var collectorMouseCoords = [];
+var collectorMouseClicks = [];
 
 
 function imagesEnabled() {
@@ -72,9 +73,10 @@ document.onmousedown = function(event) {
 	c_clickPointerX = event.pageX;
 	c_clickPointerY = event.pageY;
 	c_clickButton  = event.button;
-	console.log(c_clickPointerX, c_clickPointerY, c_clickButton);
+	collectorMouseClicks.push([c_clickPointerX, c_clickPointerY, c_clickButton])
 }
 setInterval(updateMouseCoords, 1000);
 function updateMouseCoords() {
-	console.log('Pushing mouse coord array with length: ', collectorMouseCoords.length);
+	console.log('Pushing mousemov coord array with length: ', collectorMouseCoords.length);
+	console.log('Pushing mouseclick coord array with length: ', collectorMouseClicks.length);
 }
