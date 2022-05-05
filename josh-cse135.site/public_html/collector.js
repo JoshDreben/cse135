@@ -16,12 +16,7 @@ function cssEnabled () {
 }
 
 function showNavDetails() {
-	// Get the first entry
-	const po = new PerformanceObserver((list) => {
-		for (const entry of list.getEntries()) {
-		  console.log(entry.toJSON());
-		}
-	  });
+	console.log(window.performance.getEntriesByType("navigation"));
 }
 
 function load() {
