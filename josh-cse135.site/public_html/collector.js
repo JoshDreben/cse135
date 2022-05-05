@@ -39,6 +39,5 @@ function load() {
 	showNavDetails();
 	console.log(static);
 }
-load();
 
 //window.onload = load();
