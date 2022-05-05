@@ -58,8 +58,8 @@ let c_pointerY = -1;
 document.onmousemove = function(event) {
 	c_pointerX = event.pageX;
 	c_pointerY = event.pageY;
-}
-setInterval(pointerCheck, 100);
-function pointerCheck() {
 	console.log('Cursor at: '+c_pointerX+', '+c_pointerY);
 }
+//setInterval(pointerCheck, 100);
+//function pointerCheck() {
+//}
