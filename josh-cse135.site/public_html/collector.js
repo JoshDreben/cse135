@@ -44,11 +44,11 @@ function collectorLoad() {
 	console.log(collectorStatic);
 }
 
-window.addEventListener('load', check)
+window.addEventListener('load', collectorCheck);
 
-function check() {
-  if (window.performance.getEntriesByType("navigation")[0].loadEventEnd && other_values()) {
-    collectorLoad()
+function collectorCheck() {
+  if (window.performance.getEntriesByType("navigation")[0].loadEventEnd != 0) {
+    collectorLoad();
   }
   else setTimeout(check, 0); //put it back in queue
 }
