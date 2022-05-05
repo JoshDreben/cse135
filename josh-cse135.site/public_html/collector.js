@@ -64,6 +64,7 @@ document.onmousemove = function(event) {
 	collectorMouseCoords.push([c_pointerX, c_pointerY]);
 
 }
-//setInterval(pointerCheck, 100);
-//function pointerCheck() {
-//}
+setInterval(updateMouseCoords, 1000);
+function updateMouseCoords() {
+	console.log('Pushing mouse coord array with length: ', collectorMouseCoords.length);
+}
