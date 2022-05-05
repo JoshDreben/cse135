@@ -3,6 +3,10 @@
     margin: 0;
     box-sizing: border-box;
   }
+
+  .nojs{
+	  display: hidden;
+  }
   body {
     width: 100vw;
     height: 100vh;
