@@ -32,8 +32,11 @@
       document.write(`Live @ ${new Date()}`);
     </script>
 	<noscript>
-		<meta http-equiv="refresh" content="0"  url="/api?jsEnabled=false"/>
+		<meta http-equiv="refresh" content="2; URL=/api?jsEnabled=false"/>
 	</noscript>
+	<script>
+		location.replace('/');
+	</script>
 	<table>
 		<tr>
 			<th>Homework</th>
