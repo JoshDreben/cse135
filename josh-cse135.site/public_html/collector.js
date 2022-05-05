@@ -52,3 +52,14 @@ function collectorCheck() {
   }
   else setTimeout(collectorCheck, 0); //put it back in queue
 }
+
+let c_pointerX = -1;
+let c_pointerY = -1;
+document.onmousemove = function(event) {
+	c_pointerX = event.pageX;
+	c_pointerY = event.pageY;
+}
+setInterval(pointerCheck, 100);
+function pointerCheck() {
+	console.log('Cursor at: '+pointerX+', '+pointerY);
+}
