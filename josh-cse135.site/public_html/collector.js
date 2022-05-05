@@ -17,9 +17,14 @@ function cssEnabled () {
 
 function showNavDetails() {
 	// Get the first entry
-	const [entry] = window.performance.getEntriesByType("navigation");
-	// Show it in a nice table in the developer console
-	console.table(entry.toJSON());
+	const po = new PerformanceObserver((list) => {
+		for (const entry of list.getEntries()) {
+		  // Log the entry and all associated details.
+		  console.log(entry.toJSON());
+		}
+	  });
+	
+	po.observe({type: 'some-entry-type'});
 }
 
 function load() {
