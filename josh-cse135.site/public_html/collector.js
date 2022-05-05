@@ -61,7 +61,8 @@ let c_pointerX = -1;
 let c_pointerY = -1;
 let c_clickPointerX = -1;
 let c_clickPointerY = -1;
-let c_scrollPointerX = -1;
+
+let c_oldSrollY = 0;
 let c_scrollPointerY = -1;
 let c_clickButton = null;
 document.onmousemove = function(event) {
@@ -80,9 +81,10 @@ document.onmousedown = function(event) {
 }
 
 document.onscroll = function (event) {
-	c_scrollPointerX = event.pageX;
-	c_scrollPointerY = event.pageY;
-	collectorScrolls.push([c_scrollPointerX, c_scrollPointerY]);
+	c_scrollPointerY = window.scrollY;
+	collectorScrolls.push([c_oldSrollY, c_scrollPointerY]);
+	c_oldSrollY = c_scrollPointerY;
+
 }
 setInterval(updateMouseCoords, 1000);
 function updateMouseCoords() {
