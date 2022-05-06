@@ -96,5 +96,10 @@ document.onscroll = function (event) {
 }
 setInterval(updateMouseCoords, 1000);
 function updateMouseCoords() {
-	console.log('Pushing mousemov coord array with length: ', collectorMouseCoords.length, '\n Pushing mouseclick coord array with length: ', collectorMouseClicks.length, '\n Pushing scroll coord array with length: ', collectorScrolls.length);
+	console.log('Pushing mousemov coord array with length: ', 
+	collectorMouseCoords.length, '\n Pushing mouseclick coord array with length: ', 
+	collectorMouseClicks.length, '\n Pushing scroll coord array with length: ', 
+	collectorScrolls.length, '\n Pushing key down info with array length: ',
+	collectorKeyDown.length, '\n Pushing key up info with array length: ',
+	collectorKeyUp.length);
 }
