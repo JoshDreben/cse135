@@ -110,15 +110,21 @@ document.onscroll = function (event) {
 	c_oldSrollY = c_scrollPointerY;
 
 }
-setInterval(updateMouseCoords, 1000);
-function updateMouseCoords() {
-	console.log('Pushing mousemov coord array with length: ', 
-	collectorMouseCoords.length, '\n Pushing mouseclick coord array with length: ', 
-	collectorMouseClicks.length, '\n Pushing scroll coord array with length: ', 
-	collectorScrolls.length, '\n Pushing key down info with array length: ',
-	collectorKeyDown.length, '\n Pushing key up info with array length: ',
-	collectorKeyUp.length, '\n Pushing idle time with array length: ', 
-	collectorIdleTimeouts.length);
+setInterval(updateActivity, 1000);
+function updateActivity() {
+	// console.log('Pushing mousemov coord array with length: ', 
+	// collectorMouseCoords.length, '\n Pushing mouseclick coord array with length: ', 
+	// collectorMouseClicks.length, '\n Pushing scroll coord array with length: ', 
+	// collectorScrolls.length, '\n Pushing key down info with array length: ',
+	// collectorKeyDown.length, '\n Pushing key up info with array length: ',
+	// collectorKeyUp.length, '\n Pushing idle time with array length: ', 
+	// collectorIdleTimeouts.length);
+	collectorActivity["mouseCoords"] = collectorMouseCoords;
+	collectorActivity["mouseClicks"] = collectorMouseCoords;
+	collectorActivity["scrolls"] = collectorMouseCoords;
+	collectorActivity["keysDown"] = collectorMouseCoords;
+	collectorActivity["keysUp"] = collectorMouseCoords;
+	collectorActivity["idleTimeouts"] = collectorMouseCoords;
 }
 
 setInterval(updateTimer, 1);
