@@ -49,10 +49,18 @@ function collectorLoad() {
 	collectorPerformance["loadStart"] = window.performance.timing.loadEventStart;
 	collectorPerformance["loadEnd"] = window.performance.timing.loadEventEnd;
 	collectorPerformance["totalLoad"] = collectorPerformance["loadEnd"] - collectorPerformance["loadStart"];
+	collectorActivity["timeEntered"] = window.performance.timeOrigin;
+	collectorActivity["page"] = window.location;
 	console.log(collectorStatic, collectorPerformance);
 }
 
 window.addEventListener('load', collectorCheck);
+
+window.addEventListener('beforeunload', unloadCollector);
+
+function unloadCollector() {
+	collectorActivity["timeLeft"] = Date.now();	
+}
 
 function collectorCheck() {
   if (window.performance.getEntriesByType("navigation")[0].loadEventEnd != 0) {
