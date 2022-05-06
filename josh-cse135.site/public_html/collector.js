@@ -9,7 +9,7 @@ var collectorKeyDown = [];
 var collectorKeyUp = [];
 var collectorIdleTimeouts = [];
 
-var collectorTimer;
+var collectorTimer = 0;
 
 function imagesEnabled() {
 	if ((document.getElementById('imageFlag').offsetWidth == 1)) {
@@ -120,8 +120,8 @@ function updateTimer() {
 }
 function resetIdleTimer() {
 	idleTime = collectorTimer;
-	clearTimeout(collectorTimer);
 	if (collectorTimer >= 2000) {
 		collectorIdleTimeouts.push([idleTime, Date.now()]);
 	}
+	collectorTimer = 0;
 }
