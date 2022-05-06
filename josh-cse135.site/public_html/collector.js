@@ -10,6 +10,7 @@ var collectorKeyUp = [];
 var collectorIdleTimeouts = [];
 
 var collectorTimer = 0;
+var collectorSessionId = Date.now().toString();
 
 function imagesEnabled() {
 	if ((document.getElementById('imageFlag').offsetWidth == 1)) {
@@ -52,6 +53,10 @@ function collectorLoad() {
 	collectorActivity["timeEntered"] = window.performance.timeOrigin;
 	collectorActivity["page"] = window.location;
 	console.log(collectorStatic, collectorPerformance);
+	collectorSessionId = collectorSessionId.concat(window.timeOrigin.toString());
+	collectorActivity["SID"] = collectorSessionId;
+	collectorPerformance["SID"] = collectorSessionId;
+	collectorStatic["SID"] = collectorSessionId;
 }
 
 window.addEventListener('load', collectorCheck);
@@ -59,7 +64,7 @@ window.addEventListener('load', collectorCheck);
 window.addEventListener('beforeunload', unloadCollector);
 
 function unloadCollector() {
-	collectorActivity["timeLeft"] = Date.now();	
+	collectorActivity["timeExited"] = Date.now();	
 }
 
 function collectorCheck() {
@@ -69,20 +74,13 @@ function collectorCheck() {
   else setTimeout(collectorCheck, 0); //put it back in queue
 }
 
-let c_pointerX = -1;
-let c_pointerY = -1;
-let c_clickPointerX = -1;
-let c_clickPointerY = -1;
 
 let c_oldSrollY = 0;
 let c_scrollPointerY = -1;
-let c_clickButton = null;
 document.onmousemove = function(event) {
-	c_pointerX = event.pageX;
-	c_pointerY = event.pageY;
 	resetIdleTimer();
 
-	collectorMouseCoords.push([c_pointerX, c_pointerY]);
+	collectorMouseCoords.push([event.pageX, event.pageY]);
 
 }
 
@@ -97,10 +95,7 @@ document.onkeyup = function(event) {
 
 document.onmousedown = function(event) {
 	resetIdleTimer();
-	c_clickPointerX = event.pageX;
-	c_clickPointerY = event.pageY;
-	c_clickButton  = event.button;
-	collectorMouseClicks.push([c_clickPointerX, c_clickPointerY, c_clickButton])
+	collectorMouseClicks.push([event.pageX, event.pageY, event.button])
 }
 
 document.onscroll = function (event) {
@@ -108,17 +103,10 @@ document.onscroll = function (event) {
 	resetIdleTimer();
 	collectorScrolls.push([c_oldSrollY, c_scrollPointerY]);
 	c_oldSrollY = c_scrollPointerY;
-
 }
+
 setInterval(updateActivity, 1000);
 function updateActivity() {
-	// console.log('Pushing mousemov coord array with length: ', 
-	// collectorMouseCoords.length, '\n Pushing mouseclick coord array with length: ', 
-	// collectorMouseClicks.length, '\n Pushing scroll coord array with length: ', 
-	// collectorScrolls.length, '\n Pushing key down info with array length: ',
-	// collectorKeyDown.length, '\n Pushing key up info with array length: ',
-	// collectorKeyUp.length, '\n Pushing idle time with array length: ', 
-	// collectorIdleTimeouts.length);
 	collectorActivity["mouseCoords"] = collectorMouseCoords;
 	collectorActivity["mouseClicks"] = collectorMouseClicks;
 	collectorActivity["scrolls"] = collectorScrolls;
