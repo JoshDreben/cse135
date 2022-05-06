@@ -7,7 +7,9 @@ var collectorMouseClicks = [];
 var collectorScrolls = [];
 var collectorKeyDown = [];
 var collectorKeyUp = [];
+var collectorIdleTimeouts = [];
 
+var collectorTimer;
 
 function imagesEnabled() {
 	if ((document.getElementById('imageFlag').offsetWidth == 1)) {
@@ -70,18 +72,23 @@ let c_clickButton = null;
 document.onmousemove = function(event) {
 	c_pointerX = event.pageX;
 	c_pointerY = event.pageY;
+	resetIdleTimer();
+
 	collectorMouseCoords.push([c_pointerX, c_pointerY]);
 
 }
 
 document.onkeydown = function(event) {
+	resetIdleTimer();
 	collectorKeyDown.push([event.key,event.code]);
 }
 document.onkeyup = function(event) {
+	resetIdleTimer();
 	collectorKeyUp.push([event.key,event.code]);
 }
 
 document.onmousedown = function(event) {
+	resetIdleTimer();
 	c_clickPointerX = event.pageX;
 	c_clickPointerY = event.pageY;
 	c_clickButton  = event.button;
@@ -90,6 +97,7 @@ document.onmousedown = function(event) {
 
 document.onscroll = function (event) {
 	c_scrollPointerY = window.scrollY;
+	resetIdleTimer();
 	collectorScrolls.push([c_oldSrollY, c_scrollPointerY]);
 	c_oldSrollY = c_scrollPointerY;
 
@@ -101,5 +109,19 @@ function updateMouseCoords() {
 	collectorMouseClicks.length, '\n Pushing scroll coord array with length: ', 
 	collectorScrolls.length, '\n Pushing key down info with array length: ',
 	collectorKeyDown.length, '\n Pushing key up info with array length: ',
-	collectorKeyUp.length);
+	collectorKeyUp.length, '\n Pushing idle time with array length: ', 
+	collectorIdleTimeouts.length);
+}
+
+setInterval(updateTimer, 1);
+
+function updateTimer() {
+	collectorTimer += 1;
+}
+function resetIdleTimer() {
+	idleTime = collectorTimer;
+	clearTimeout(collectorTimer);
+	if (collectorTimer >= 2000) {
+		collectorIdleTimeouts.push([idleTime, Date.now()]);
+	}
 }
