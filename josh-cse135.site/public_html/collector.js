@@ -5,6 +5,8 @@ var collectorActivity = {};
 var collectorMouseCoords = [];
 var collectorMouseClicks = [];
 var collectorScrolls = [];
+var collectorKeyDown = [];
+var collectorKeyUp = [];
 
 
 function imagesEnabled() {
@@ -68,9 +70,15 @@ let c_clickButton = null;
 document.onmousemove = function(event) {
 	c_pointerX = event.pageX;
 	c_pointerY = event.pageY;
-	//console.log('Cursor at: '+c_pointerX+', '+c_pointerY);
 	collectorMouseCoords.push([c_pointerX, c_pointerY]);
 
+}
+
+document.onkeydown = function(event) {
+	collectorKeyDown.push([event.key,event.code]);
+}
+document.onkeyup = function(event) {
+	collectorKeyUp.push([event.key,event.code]);
 }
 
 document.onmousedown = function(event) {
