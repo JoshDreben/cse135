@@ -120,11 +120,11 @@ function updateActivity() {
 	// collectorKeyUp.length, '\n Pushing idle time with array length: ', 
 	// collectorIdleTimeouts.length);
 	collectorActivity["mouseCoords"] = collectorMouseCoords;
-	collectorActivity["mouseClicks"] = collectorMouseCoords;
-	collectorActivity["scrolls"] = collectorMouseCoords;
-	collectorActivity["keysDown"] = collectorMouseCoords;
-	collectorActivity["keysUp"] = collectorMouseCoords;
-	collectorActivity["idleTimeouts"] = collectorMouseCoords;
+	collectorActivity["mouseClicks"] = collectorMouseClicks;
+	collectorActivity["scrolls"] = collectorScrolls;
+	collectorActivity["keysDown"] = collectorKeyDown;
+	collectorActivity["keysUp"] = collectorKeyUp;
+	collectorActivity["idleTimeouts"] = collectorIdleTimeouts;
 }
 
 setInterval(updateTimer, 1);
