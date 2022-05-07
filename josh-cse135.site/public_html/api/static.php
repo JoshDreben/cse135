@@ -2,7 +2,7 @@
 	header('Content-Type: application/json');
 	header('Cache-Control: no-cache');
 	$json_res = NULL;
-	if($_SERVER['REQUEST_METHOD'] === 'POST') {
+	if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST["id"])) {
 		$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 		if(strcasecmp($contentType, 'application/json') != 0){
 			http_response_code(400);
