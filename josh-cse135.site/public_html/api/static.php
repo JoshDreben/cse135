@@ -19,9 +19,8 @@
 			echo json_encode($json_res);
 			exit();
 		}
-		$json_res = json_encode($decoded);
+		$json_res = $decoded;
 		file_put_contents("test_db.json", $json_res);
-
 	} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET["id"])) {
 		// POST REQUEST ON OLD RECORD (not allowed)
 		http_response_code(400);
