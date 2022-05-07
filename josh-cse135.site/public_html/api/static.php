@@ -2,7 +2,9 @@
 	header('Content-Type: application/json');
 	header('Cache-Control: no-cache');
 	$json_res = NULL;
+	$db = "test_db.json";
 	if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_GET["id"])) {
+		// POST REQUEST FOR NEW RECORD
 		$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 		if(strcasecmp($contentType, 'application/json') != 0){
 			http_response_code(400);
@@ -19,6 +21,14 @@
 			exit();
 		}
 		$json_res = $decoded;
-	}
+		file_put_contents($db, json_encode($json_res));
+
+	} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET["id"])) {
+		// POST REQUEST ON OLD RECORD (not allowed)
+		http_response_code(400);
+		$json_res["message"] = "Only use PUT or PATCH request method to update a record!";
+		echo json_encode($json_res);
+		exit();
+	} 
 	echo json_encode($json_res);
 ?>
