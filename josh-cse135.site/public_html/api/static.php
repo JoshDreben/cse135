@@ -1,11 +1,15 @@
 <?php
 	header('Content-type: application/json');
-
+	$json_res = NULL;
 	if($_SERVER['REQUEST_METHOD'] === 'POST') {
-		$json_res = json_encode($_REQUEST);
-		echo $json_res;
+		foreach ($_POST as $key => $value)
+		{
+			$json_res[$key] = $value;	
+		}
 	} else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		$json_res = json_encode($_REQUEST);
-		echo $json_res;	
-	} else
+	} 
+
+	$json_res = json_encode($json_res);
+	echo $json_res;
 ?>
