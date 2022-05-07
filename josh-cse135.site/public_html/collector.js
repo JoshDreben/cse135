@@ -57,6 +57,13 @@ function collectorLoad() {
 	collectorActivity["SID"] = collectorSessionId;
 	collectorPerformance["SID"] = collectorSessionId;
 	collectorStatic["SID"] = collectorSessionId;
+	fetch('/api/static', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(collectorStatic)
+	}).then((res) => console.log(res));
 }
 
 window.addEventListener('load', collectorCheck);
