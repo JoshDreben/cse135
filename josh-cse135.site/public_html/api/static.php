@@ -2,7 +2,7 @@
 	header('Content-Type: application/json');
 	header('Cache-Control: no-cache');
 	$json_res = NULL;
-	$db = "test_db.json";
+	$db = "./test_db.json";
 	if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_GET["id"])) {
 		// POST REQUEST FOR NEW RECORD
 		$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
