@@ -2,7 +2,6 @@
 	header('Content-Type: application/json');
 	header('Cache-Control: no-cache');
 	$json_res = NULL;
-	$db = "./test_db.json";
 	if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_GET["id"])) {
 		// POST REQUEST FOR NEW RECORD
 		$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
@@ -21,7 +20,12 @@
 			exit();
 		}
 		$json_res = $decoded;
-		file_put_contents($db, json_encode($json_res));
+		if (file_put_contents("test_db.json", $json_res))
+			echo "JSON file created successfully...";
+		else 
+			echo "Oops! Error creating json file...";
+		exit();
+
 	} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET["id"])) {
 		// POST REQUEST ON OLD RECORD (not allowed)
 		http_response_code(400);
