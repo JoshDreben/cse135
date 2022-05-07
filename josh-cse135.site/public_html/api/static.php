@@ -11,5 +11,5 @@
 
 	$content = trim(file_get_contents("php://input"));
 	$decoded = json_decode($content, true);
-	echo $decoded;
+	echo json_encode($decoded);
 ?>
