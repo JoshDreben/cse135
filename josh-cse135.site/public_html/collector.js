@@ -57,7 +57,7 @@ function collectorLoad() {
 	collectorActivity["SID"] = collectorSessionId;
 	collectorPerformance["SID"] = collectorSessionId;
 	collectorStatic["SID"] = collectorSessionId;
-	fetch('/api/static', {
+	fetch('https://josh-cse135.site/api/static', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
