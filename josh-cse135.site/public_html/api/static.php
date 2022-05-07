@@ -1,6 +1,6 @@
 <?php
-	header('Content-type: application/json');
-	header('Cache-control: no-cache');
+	header('Content-Type: application/json');
+	header('Cache-Control: no-cache');
 	$json_res = NULL;
 	if($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
