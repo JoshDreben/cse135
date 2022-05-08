@@ -9,7 +9,6 @@
 		echo json_encode($json_res);
 		exit();
 	}
-	//$conn = new mysqli("localhost", "admin", "CSE135@dmin");
 	if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_GET["id"])) {
 		// POST REQUEST FOR NEW RECORD
 		$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
@@ -92,7 +91,12 @@
 			$emparray[] = $row;
 		}
 		$json_res = $emparray;	
-	}
+	} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET["id"])) {
+		$id = $_GET["id"];
+		$sql = "DELETE FROM static WHERE sid=$id";
+		$res = $con->query($sql);
+		$json_res = $res;
+	} 
 	mysqli_close($con);
 	echo json_encode($json_res);
 ?>
