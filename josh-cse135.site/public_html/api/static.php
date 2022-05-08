@@ -41,6 +41,18 @@
 		$js_enabled = $json_res["jsEnabled"];
 		$images_enabled = $json_res["imagesEnabled"];
 		$css_enabled = $json_res["cssEnabled"];
+
+		if (empty($userAgent) || empty($sid) || empty($language) || empty($accept_cookies) ||
+			empty($window_inner_width) || empty($window_inner_height) || empty($window_outer_width) ||
+			empty($window_outer_height) || empty($screen_width) || empty($screen_height) ||
+			empty($js_enabled) || empty($images_enabled) || empty($css_enabled))
+		{
+			mysqli_close($con);
+			http_response_code(400);
+			$json_res["message"] = "Static record missing value/s!";
+			echo json_encode($json_res);
+			exit();
+		}
 		
 		$sql = "INSERT INTO static(user_agent, sid, language, accept_cookies, window_inner_width, 
 		window_inner_height, window_outer_width, window_outer_height, screen_width, screen_height,
