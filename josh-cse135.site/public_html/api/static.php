@@ -29,7 +29,7 @@
 		$id = $json_res["PID"];
 		$sql = "INSERT INTO static(sid)
 		VALUES('$id')";
-		$conn->query($sql);
+		$con->query($sql);
 		//file_put_contents("test_db.json", json_encode($json_res));
 	} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET["id"])) {
 		// POST REQUEST ON OLD RECORD (not allowed)
