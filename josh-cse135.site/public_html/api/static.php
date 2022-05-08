@@ -137,6 +137,9 @@
 		images_enabled='$images_enabled', css_enabled='$css_enabled' WHERE sid=$id";
 		$res = $con->query($sql);
 		$json_res = $res;
+	} else {
+		http_response_code(400);
+		$json_res["message"] = "Invalid Request!";
 	}
 
 	mysqli_close($con);
