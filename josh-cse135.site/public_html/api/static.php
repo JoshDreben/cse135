@@ -97,6 +97,25 @@
 		$res = $con->query($sql);
 		$json_res = $res;
 	} else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET["id"])) {
+		$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+		if(strcasecmp($contentType, 'application/json') != 0){
+			mysqli_close($con);
+			http_response_code(400);
+			$json_res["message"] = "Content type must be application/json!";
+			echo json_encode($json_res);
+			exit();
+		}
+		$content = trim(file_get_contents("php://input"));
+		$decoded = json_decode($content, true);
+		if(!is_array($decoded)){
+			mysqli_close($con);
+			http_response_code(400);
+			$json_res["message"] = "JSON was sent malformed!";
+			echo json_encode($json_res);
+			exit();
+		}
+
+		$json_res = $decoded;
 		$userAgent = $json_res["userAgent"];
 		$sid = $json_res["SID"];
 		$language = $json_res["language"];
