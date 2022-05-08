@@ -49,6 +49,7 @@
 		{
 			mysqli_close($con);
 			http_response_code(400);
+			$json_res = null;
 			$json_res["message"] = "Static record missing value/s!";
 			echo json_encode($json_res);
 			exit();
