@@ -5,7 +5,7 @@
 	$con = mysqli_connect("localhost","admin","CSE135@dmin","cse135");
     if (mysqli_connect_errno()){
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		die();
+		exit();
 	}
 	//$conn = new mysqli("localhost", "admin", "CSE135@dmin");
 	if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_GET["id"])) {
