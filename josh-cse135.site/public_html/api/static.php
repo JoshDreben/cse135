@@ -136,7 +136,7 @@
 		screen_width='$screen_width', screen_height='$screen_height', js_enabled='$js_enabled',
 		images_enabled='$images_enabled', css_enabled='$css_enabled' WHERE sid=$id";
 		$res = $con->query($sql);
-		$json_res = $con->error;
+		$json_res = $res;
 	}
 
 	mysqli_close($con);
