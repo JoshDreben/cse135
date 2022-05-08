@@ -4,7 +4,9 @@
 	$json_res = NULL;
 	$con = mysqli_connect("localhost","admin","CSE135@dmin","cse135");
     if (mysqli_connect_errno()){
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		http_response_code(500);
+		$json_res["message"] = "Failed to connect to MySQL: " . mysqli_connect_error();
+		echo json_encode($json_res);
 		exit();
 	}
 	//$conn = new mysqli("localhost", "admin", "CSE135@dmin");
@@ -80,7 +82,17 @@
 			$emparray[] = $row;
 		}
 		$json_res = $emparray;
-	} 
+	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
+		$id = $_GET["id"];
+		$sql = "SELECT * FROM static WHERE sid=$id";
+		$res = $con->query($sql);
+		$emparray = array();
+		while ($row = mysqli_fetch_assoc($res))
+		{
+			$emparray[] = $row;
+		}
+		$json_res = $emparray;	
+	}
 	mysqli_close($con);
 	echo json_encode($json_res);
 ?>
