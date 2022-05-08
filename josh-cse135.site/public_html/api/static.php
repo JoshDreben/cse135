@@ -2,6 +2,12 @@
 	header('Content-Type: application/json');
 	header('Cache-Control: no-cache');
 	$json_res = NULL;
+	$con = mysqli_connect("localhost","admin","CSE135@dmin","cse135");
+    if (mysqli_connect_errno()){
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		die();
+	}
+	//$conn = new mysqli("localhost", "admin", "CSE135@dmin");
 	if($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_GET["id"])) {
 		// POST REQUEST FOR NEW RECORD
 		$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
@@ -20,7 +26,11 @@
 			exit();
 		}
 		$json_res = $decoded;
-		file_put_contents("test_db.json", json_encode($json_res));
+		$id = $json_res["PID"];
+		$sql = "INSERT INTO static(sid)
+		VALUES('$id')";
+		$conn->query($sql);
+		//file_put_contents("test_db.json", json_encode($json_res));
 	} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET["id"])) {
 		// POST REQUEST ON OLD RECORD (not allowed)
 		http_response_code(400);
