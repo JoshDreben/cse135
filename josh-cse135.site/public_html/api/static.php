@@ -73,7 +73,7 @@
 		$json_res["message"] = "Only use PUT or PATCH request method to update a record!";
 		echo json_encode($json_res);
 		exit();
-	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET["id"])) {
+	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && (!isset($_GET["id"]) || empty($_GET["id"]))) {
 		$sql = "SELECT * FROM static";
 		$res = $con->query($sql);
 		$emparray = array();
