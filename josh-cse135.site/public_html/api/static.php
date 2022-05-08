@@ -12,6 +12,7 @@
 		// POST REQUEST FOR NEW RECORD
 		$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 		if(strcasecmp($contentType, 'application/json') != 0){
+			mysqli_close($con);
 			http_response_code(400);
 			$json_res["message"] = "Content type must be application/json!";
 			echo json_encode($json_res);
@@ -20,6 +21,7 @@
 		$content = trim(file_get_contents("php://input"));
 		$decoded = json_decode($content, true);
 		if(!is_array($decoded)){
+			mysqli_close($con);
 			http_response_code(400);
 			$json_res["message"] = "JSON was sent malformed!";
 			echo json_encode($json_res);
@@ -65,6 +67,7 @@
 	} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET["id"])) {
 		// POST REQUEST ON OLD RECORD (not allowed)
 		http_response_code(400);
+		mysqli_close($con);
 		$json_res["message"] = "Only use PUT or PATCH request method to update a record!";
 		echo json_encode($json_res);
 		exit();
