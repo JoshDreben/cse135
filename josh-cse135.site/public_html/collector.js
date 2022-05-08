@@ -53,7 +53,6 @@ function collectorLoad() {
 	collectorActivity["timeEntered"] = window.performance.timeOrigin;
 	collectorActivity["page"] = window.location;
 	console.log(collectorStatic, collectorPerformance);
-	collectorSessionId = collectorSessionId.concat(window.performance.timeOrigin.toString());
 	collectorActivity["SID"] = parseInt(collectorSessionId);
 	collectorPerformance["SID"] = parseInt(collectorSessionId);
 	collectorStatic["SID"] = parseInt(collectorSessionId);
