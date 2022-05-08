@@ -130,11 +130,11 @@
 		$css_enabled = $json_res["cssEnabled"];
 
 		$id  = $_GET["id"];
-		$sql = "UPDATE static SET user_agent=$userAgent, language=$language, accept_cookies=$accept_cookies,
-		window_inner_width=$window_inner_width, window_inner_height=$window_inner_height, 
-		window_outer_width=$window_outer_width, window_outer_height=$window_outer_height,
-		screen_width=$screen_width, screen_height=$screen_height, js_enabled=$js_enabled,
-		images_enabled=$images_enabled, css_enabled=$css_enabled WHERE sid=$id";
+		$sql = "UPDATE static SET user_agent='$userAgent', language='$language', accept_cookies='$accept_cookies',
+		window_inner_width='$window_inner_width', window_inner_height='$window_inner_height', 
+		window_outer_width='$window_outer_width', window_outer_height='$window_outer_height',
+		screen_width='$screen_width', screen_height='$screen_height', js_enabled='$js_enabled',
+		images_enabled='$images_enabled', css_enabled='$css_enabled' WHERE sid=$id";
 		$res = $con->query($sql);
 		$json_res = $con->error;
 	}
