@@ -56,7 +56,15 @@
 		echo json_encode($json_res);
 		exit();
 	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET["id"])) {
-		$json_res = json_decode(file_get_contents("test_db.json"));
+		$sql = "SELECT * FROM static";
+		$res = $con->query($sql);
+		$emparray = array();
+		while ($row = mysqli_fetch_assoc($res))
+		{
+			$emparray[] = $row;
+		}
+		$json_res = $emparray;
 	} 
+	mysqli_close($con);
 	echo json_encode($json_res);
 ?>
