@@ -117,7 +117,6 @@
 
 		$json_res = $decoded;
 		$userAgent = $json_res["userAgent"];
-		$sid = $json_res["SID"];
 		$language = $json_res["language"];
 		$accept_cookies = $json_res["acceptCookies"];
 		$window_inner_width = $json_res["windowInnerWidth"];
@@ -130,12 +129,12 @@
 		$images_enabled = $json_res["imagesEnabled"];
 		$css_enabled = $json_res["cssEnabled"];
 
-		$id = $_GET["id"];
+		$id  = $_GET["id"];
 		$sql = "UPDATE static SET user_agent='$userAgent', language='$language', accept_cookies='$accept_cookies',
 		window_inner_width='$window_inner_width', window_inner_height='$window_inner_height', 
 		window_outer_width='$window_outer_width', window_outer_height='$window_outer_height',
 		screen_width='$screen_width', screen_height='$screen_height', js_enabled='$js_enabled',
-		images_enabled='$images_enabled', css_enabled='$css_enabled', WHERE sid=$id";
+		images_enabled='$images_enabled', css_enabled='$css_enabled' WHERE sid=$id";
 		$res = $con->query($sql);
 		$json_res = $res;
 	}
