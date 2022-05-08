@@ -54,9 +54,9 @@ function collectorLoad() {
 	collectorActivity["page"] = window.location;
 	console.log(collectorStatic, collectorPerformance);
 	collectorSessionId = collectorSessionId.concat(window.performance.timeOrigin.toString());
-	collectorActivity["SID"] = int(collectorSessionId);
-	collectorPerformance["SID"] = int(collectorSessionId);
-	collectorStatic["SID"] = int(collectorSessionId);
+	collectorActivity["SID"] = parseInt(collectorSessionId);
+	collectorPerformance["SID"] = parseInt(collectorSessionId);
+	collectorStatic["SID"] = parseInt(collectorSessionId);
 	fetch('https://josh-cse135.site/api/static', {
 		method: 'POST',
 		headers: {
