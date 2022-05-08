@@ -26,11 +26,29 @@
 			exit();
 		}
 		$json_res = $decoded;
-		$id = $json_res["PID"];
-		$sql = "INSERT INTO static(sid)
-		VALUES('$id')";
+
+		
+		$userAgent = $json_res["userAgent"];
+		$sid = $json_res["SID"];
+		$language = $json_res["language"];
+		$accept_cookies = $json_res["acceptCookies"];
+		$window_inner_width = $json_res["windowInnerWidth"];
+		$window_inner_height = $json_res["windowInnerHeight"];
+		$window_outer_width = $json_res["windowOuterWidth"];
+		$window_outer_height = $json_res["windowOuterHeight"];
+		$screen_width = $json_res["screenWidth"];
+		$screen_height = $json_res["screenHeight"];
+		$js_enabled = $json_res["jsEnabled"];
+		$images_enabled = $json_res["imagesEnabled"];
+		$css_enabled = $json_res["cssEnabled"];
+		
+		$sql = "INSERT INTO static(user_agent, sid, language, accept_cookies, window_inner_width, 
+		window_inner_height, window_outer_width, window_outer_height, screen_width, screen_height,
+		js_enabled, images_enabled, css_enabled)
+		VALUES($userAgent,$sid,$language, $accept_cookies, $window_inner_width, $window_inner_height,
+		$window_outer_width, $window_outer_height, $screen_width, $screen_height, $js_enabled,
+		$images_enabled, $css_enabled)";
 		$con->query($sql);
-		//file_put_contents("test_db.json", json_encode($json_res));
 	} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET["id"])) {
 		// POST REQUEST ON OLD RECORD (not allowed)
 		http_response_code(400);
