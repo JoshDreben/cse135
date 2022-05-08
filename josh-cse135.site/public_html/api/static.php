@@ -45,9 +45,9 @@
 		$sql = "INSERT INTO static(user_agent, sid, language, accept_cookies, window_inner_width, 
 		window_inner_height, window_outer_width, window_outer_height, screen_width, screen_height,
 		js_enabled, images_enabled, css_enabled)
-		VALUES($userAgent,$sid,$language, $accept_cookies, $window_inner_width, $window_inner_height,
-		$window_outer_width, $window_outer_height, $screen_width, $screen_height, $js_enabled,
-		$images_enabled, $css_enabled)";
+		VALUES('$userAgent','$sid','$language', '$accept_cookies', '$window_inner_width', '$window_inner_height',
+		'$window_outer_width', '$window_outer_height', '$screen_width', '$screen_height', '$js_enabled',
+		'$images_enabled', '$css_enabled')";
 		$con->query($sql);
 	} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET["id"])) {
 		// POST REQUEST ON OLD RECORD (not allowed)
