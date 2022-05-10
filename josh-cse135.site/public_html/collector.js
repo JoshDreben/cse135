@@ -52,7 +52,7 @@ function collectorLoad() {
 	collectorPerformance["totalLoad"] = collectorPerformance["loadEnd"] - collectorPerformance["loadStart"];
 	collectorActivity["timeEntered"] = window.performance.timeOrigin;
 	collectorActivity["page"] = window.location;
-	console.log(collectorStatic, collectorPerformance);
+	//console.log(collectorStatic, collectorPerformance);
 	collectorActivity["SID"] = parseInt(collectorSessionId);
 	collectorPerformance["SID"] = parseInt(collectorSessionId);
 	collectorStatic["SID"] = parseInt(collectorSessionId);
@@ -62,6 +62,13 @@ function collectorLoad() {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(collectorStatic)
+	}).then((res) => console.log(res));
+	fetch('https://josh-cse135.site/api/performance', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(collectorPerformance)
 	}).then((res) => console.log(res));
 }
 
