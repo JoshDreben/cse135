@@ -132,7 +132,7 @@ document.onscroll = function (event) {
 	c_oldSrollY = c_scrollPointerY;
 }
 
-setInterval(updateActivity, 1000);
+setInterval(updateActivity, 3000);
 function updateActivity() {
 	collectorActivity["mouseCoords"] = JSON.stringify(collectorMouseCoords);
 	collectorActivity["mouseClicks"] = JSON.stringify(collectorMouseClicks);
