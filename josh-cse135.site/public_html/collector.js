@@ -127,12 +127,12 @@ document.onscroll = function (event) {
 
 setInterval(updateActivity, 1000);
 function updateActivity() {
-	collectorActivity["mouseCoords"] = collectorMouseCoords;
-	collectorActivity["mouseClicks"] = collectorMouseClicks;
-	collectorActivity["scrolls"] = collectorScrolls;
-	collectorActivity["keysDown"] = collectorKeyDown;
-	collectorActivity["keysUp"] = collectorKeyUp;
-	collectorActivity["idleTimeouts"] = collectorIdleTimeouts;
+	collectorActivity["mouseCoords"] = JSON.stringify(collectorMouseCoords);
+	collectorActivity["mouseClicks"] = JSON.stringify(collectorMouseClicks);
+	collectorActivity["scrolls"] = JSON.stringify(collectorScrolls);
+	collectorActivity["keysDown"] = JSON.stringify(collectorKeyDown);
+	collectorActivity["keysUp"] = JSON.stringify(collectorKeyUp);
+	collectorActivity["idleTimeouts"] = JSON.stringify(collectorIdleTimeouts);
 	fetch(`https://josh-cse135.site/api/activity/${collectorActivity["SID"]}`, {
 		method: 'PUT',
 		headers: {
