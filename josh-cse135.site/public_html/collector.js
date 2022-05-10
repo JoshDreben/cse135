@@ -70,6 +70,13 @@ function collectorLoad() {
 		},
 		body: JSON.stringify(collectorPerformance)
 	}).then((res) => console.log(res));
+	fetch('https://josh-cse135.site/api/activity', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(collectorActivity)
+	}).then((res) => console.log(res));
 }
 
 window.addEventListener('load', collectorCheck);
@@ -126,6 +133,13 @@ function updateActivity() {
 	collectorActivity["keysDown"] = collectorKeyDown;
 	collectorActivity["keysUp"] = collectorKeyUp;
 	collectorActivity["idleTimeouts"] = collectorIdleTimeouts;
+	fetch(`https://josh-cse135.site/api/activity/${collectorActivity["SID"]}`, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(collectorActivity)
+	}).then((res) => console.log(res));
 }
 
 setInterval(updateTimer, 1);

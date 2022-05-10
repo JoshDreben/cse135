@@ -41,17 +41,6 @@
 		$keys_up = $json_res["keysUp"];
 		$idle_timeouts = $json_res["idleTimeouts"];
 
-
-		if (empty($time_entered) || empty($time_exited) || empty($page) || empty($sid)) 
-		{
-			mysqli_close($con);
-			http_response_code(400);
-			$json_res = null;
-			$json_res["message"] = "Performance record missing value/s!";
-			echo json_encode($json_res);
-			exit();
-		}
-		
 		$sql = "INSERT INTO activity(sid, time_entered, time_exited, page, 
 							mouse_coords, mouse_clicks, scrolls, keys_down, keys_up, idle_timeouts)
 		VALUES('$sid', '$time_entered', '$time_exited', '$page', '$mouse_coords', '$mouse_clicks',
