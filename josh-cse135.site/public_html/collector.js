@@ -85,6 +85,13 @@ window.addEventListener('beforeunload', unloadCollector);
 
 function unloadCollector() {
 	collectorActivity["timeExited"] = Date.now();	
+	fetch(`https://josh-cse135.site/api/activity/${collectorActivity["SID"]}`, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(collectorActivity)
+	}).then((res) => console.log(res));
 }
 
 function collectorCheck() {
