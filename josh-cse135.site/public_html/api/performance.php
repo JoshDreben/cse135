@@ -107,7 +107,8 @@
 		$sid = $json_res["SID"];
 
 		$id  = $_GET["id"];
-		$sql = "UPDATE performance SET timing='$timing', load_start='$load_start', load_end='$load_end', total_load='$total_load'";
+		$sql = "UPDATE performance SET timing='$timing', load_start='$load_start', load_end='$load_end', total_load='$total_load'
+				WHERE sid=$id";
 		$res = $con->query($sql);
 		$json_res = $res;
 	} else {
