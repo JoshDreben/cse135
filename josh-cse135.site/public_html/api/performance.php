@@ -30,12 +30,11 @@
 		}
 		$json_res = $decoded;
 
-		$timing = json_decode($json_res["timing"]);
+		$timing = $json_res["timing"];
 		$load_start = $json_res["loadStart"];
 		$load_end = $json_res["loadEnd"];
 		$total_load = $json_res["totalLoad"];
 		$sid = $json_res["SID"];
-
 
 		if (empty($timing) || empty($sid) || empty($load_end) || empty($load_start) || empty($total_load))
 		{

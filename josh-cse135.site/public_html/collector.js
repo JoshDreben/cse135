@@ -46,7 +46,7 @@ function collectorLoad() {
 	imagesEnabled();
 	cssEnabled();
 
-	collectorPerformance["timing"] = window.performance.timing;
+	collectorPerformance["timing"] = JSON.stringify(window.performance.timing);
 	collectorPerformance["loadStart"] = window.performance.timing.loadEventStart;
 	collectorPerformance["loadEnd"] = window.performance.timing.loadEventEnd;
 	collectorPerformance["totalLoad"] = collectorPerformance["loadEnd"] - collectorPerformance["loadStart"];
