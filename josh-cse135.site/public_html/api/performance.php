@@ -36,7 +36,7 @@
 		$total_load = $json_res["totalLoad"];
 		$sid = $json_res["SID"];
 
-		if (empty($timing) || empty($sid) || empty($load_end) || empty($load_start) || empty($total_load))
+		if (empty($timing) || empty($sid) || empty($load_end) || empty($load_start) || $total_load == NULL)
 		{
 			mysqli_close($con);
 			http_response_code(400);
