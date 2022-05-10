@@ -99,7 +99,6 @@
 		$json_res = $decoded;
 		$time_entered = $json_res["timeEntered"];
 		$time_exited = $json_res["timeExited"];
-		$page = $json_res["page"];
 		$sid = $json_res["SID"];
 		$mouse_coords = $json_res["mouseCoords"];
 		$mouse_clicks = $json_res["mouseClicks"];
@@ -110,7 +109,7 @@
 
 		$id  = $_GET["id"];
 		$sql = "UPDATE activity SET time_entered='$time_entered', time_exited='$time_exited', 
-									  page='$page', mouse_coords='$mouse_coords', mouse_clicks='$mouse_clicks',
+									  mouse_coords='$mouse_coords', mouse_clicks='$mouse_clicks',
 									  scrolls='$scrolls', keys_down='$keys_down', keys_up='$keys_up', idle_timeouts='$idle_timeouts'
 									  WHERE sid=$id";
 		$res = $con->query($sql);
