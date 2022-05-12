@@ -2,7 +2,7 @@
 	header('Content-Type: application/json');
 	header('Cache-Control: no-cache');
 	$json_res = NULL;
-	$con = mysqli_connect("localhost","admin","CSE135@dmin","cse135");
+	$con = mysqli_connect("db-mysql-sfo3-98726-do-user-11245821-0.b.db.ondigitalocean.com:25060","doadmin","AVNS_Q91stfvIS6ImiPP","cse135");
     if (mysqli_connect_errno()){
 		http_response_code(500);
 		$json_res["message"] = "Failed to connect to MySQL: " . mysqli_connect_error();
