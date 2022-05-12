@@ -62,21 +62,21 @@ function collectorLoad() {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(collectorStatic)
-	}).then((res) => console.log(res));
+	});
 	fetch('https://josh-cse135.site/api/performance', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(collectorPerformance)
-	}).then((res) => console.log(res));
+	});
 	fetch('https://josh-cse135.site/api/activity', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(collectorActivity)
-	}).then((res) => console.log(res));
+	});
 }
 
 window.addEventListener('load', collectorCheck);
@@ -91,7 +91,7 @@ function unloadCollector() {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(collectorActivity)
-	}).then((res) => console.log(res));
+	});
 }
 
 function collectorCheck() {
@@ -146,7 +146,7 @@ function updateActivity() {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(collectorActivity)
-	}).then((res) => console.log(res));
+	});
 }
 
 setInterval(updateTimer, 1);
