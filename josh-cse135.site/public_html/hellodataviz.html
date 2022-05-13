@@ -48,8 +48,10 @@
 		fetch('/api/activity').then((res)=> res.json().then((json) => {
 			json.map((row) => {
 				let row_day = ((new Date(row.created)).getDay());
-				keys_down[row_day] += (JSON.parse(row.keys_down)).length;
-				mouseClicks[row_day] += (JSON.parse(row.mouse_clicks)).length;
+				if (row.keys_down != "")
+					keys_down[row_day] += (JSON.parse(row.keys_down)).length;
+				if (row.mouse_clicks != "")
+					mouseClicks[row_day] += (JSON.parse(row.mouse_clicks)).length;
 			});
 			const twoBar = {
 					type: 'bar',
