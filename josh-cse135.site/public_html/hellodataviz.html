@@ -43,7 +43,8 @@
 	fetch('/api/activity').then((res)=> res.json().then((json) => {
 		json.map((row) => {
 			let row_day = ((new Date(row.created)).getDay());
-			console.log(JSON.parse(row.mouse_coords));
+			mouseMovs[row_day] += len(JSON.parse(row.mouse_coords));
+			mouseClicks[row_day] += len(JSON.parse(row.mouse_clicks));
 		});}
 	));
 	window.addEventListener('load', function() {
@@ -87,13 +88,13 @@
 		},
 		series: [{
 			// plot 1 values, linear data
-			values: [23, 20, 27, 29, 25, 17, 15],
+			values: mouseClicks, 
 			text: 'Clicks',
 			backgroundColor: '#4d80a6'
 			},
 			{
 			// plot 2 values, linear data
-			values: [35, 42, 33, 49, 35, 47, 35],
+			values: mouseMovs,
 			text: 'Mouse Movements',
 			backgroundColor: '#70cfeb'
 			},
