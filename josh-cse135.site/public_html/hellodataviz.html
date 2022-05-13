@@ -45,8 +45,11 @@
 			let row_day = ((new Date(row.created)).getDay());
 			mouseMovs[row_day] += (JSON.parse(row.mouse_coords)).length;
 			mouseClicks[row_day] += (JSON.parse(row.mouse_clicks)).length;
-		});}
+		});
+		console.log(mouseClicks, mouseMovs);
+	}
 	));
+	
 	window.addEventListener('load', function() {
 		// Javascript code to execute after DOM content
 	
