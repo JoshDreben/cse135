@@ -39,7 +39,7 @@
 	ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"]; // window:load event for Javascript to run after HTML
 	// because this Javascript is injected into the document head
 	let mouseClicks = [0,0,0,0,0,0,0];
-	let mouseMovs = [0,0,0,0,0,0,0];
+	let keys_down = [0,0,0,0,0,0,0];
 	window.addEventListener('load', function() {
 		// Javascript code to execute after DOM content
 	
@@ -48,7 +48,7 @@
 		fetch('/api/activity').then((res)=> res.json().then((json) => {
 			json.map((row) => {
 				let row_day = ((new Date(row.created)).getDay());
-				mouseMovs[row_day] += (JSON.parse(row.mouse_coords)).length;
+				keys_down[row_day] += (JSON.parse(row.keys_down)).length;
 				mouseClicks[row_day] += (JSON.parse(row.mouse_clicks)).length;
 			});
 			const twoBar = {
@@ -93,8 +93,8 @@
 						},
 						{
 						// plot 2 values, linear data
-						values: [mouseMovs[0], mouseMovs[1], mouseMovs[2], mouseMovs[3], mouseMovs[4], mouseMovs[5], mouseMovs[6]], 
-						text: 'Mouse Movements',
+						values: [keys_down[0], keys_down[1], keys_down[2], keys_down[3], keys_down[4], keys_down[5], keys_down[6]], 
+						text: 'Keys Pressed',
 						backgroundColor: '#70cfeb'
 						},
 					],
