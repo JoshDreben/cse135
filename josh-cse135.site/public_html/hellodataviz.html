@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ZingGrid: Blank Grid</title>
+	<script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
+	<style>
+	html,
+	body {
+		height: 100vh;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.chart--container {
+		height: 100%; 
+		width: 600px;
+		min-height: 150px;
+		margin: 0 auto ;
+		margin-bottom: -22rem;
+	}
+	
+	.zc-ref {
+		display: none;
+	}
+	</style>
+</head>
+	
+<body>
+	<!-- CHART CONTAINER -->
+	<div id="twoBar" class="chart--container">
+	</div>
+	<div id="twoLine" class="chart--container">
+	</div>
+	<div id="pie" class="chart--container">
+	</div>
+	<script>
+	ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"]; // window:load event for Javascript to run after HTML
+	// because this Javascript is injected into the document head
+	fetch('/api/activity').then((res)=>console.log(res));
+	window.addEventListener('load', function() {
+		// Javascript code to execute after DOM content
+	
+		// full ZingChart schema can be found here:
+		// https://www.zingchart.com/docs/api/json-configuration/
+		const twoBar = {
+		type: 'bar',
+		title: {
+			text: 'Hello World Demo',
+			fontSize: 16,
+			color: '#5d7d9a'
+		},
+		legend: {
+			draggable: true,
+		},
+		scaleX: {
+			// set scale label
+			label: {
+			text: 'Days'
+			},
+			// convert text on scale indices
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+		},
+		scaleY: {
+			// scale label with unicode character
+			label: {
+			text: 'Temperature (°F)'
+			}
+		},
+		plot: {
+			// animation docs here:
+			// https://www.zingchart.com/docs/tutorials/design-and-styling/chart-animation/#animation__effect
+			animation: {
+			effect: 'ANIMATION_EXPAND_BOTTOM',
+			method: 'ANIMATION_STRONG_EASE_OUT',
+			sequence: 'ANIMATION_BY_NODE',
+			speed: 275,
+			}
+		},
+		series: [{
+			// plot 1 values, linear data
+			values: [23, 20, 27, 29, 25, 17, 15],
+			text: 'Week 1',
+			backgroundColor: '#4d80a6'
+			},
+			{
+			// plot 2 values, linear data
+			values: [35, 42, 33, 49, 35, 47, 35],
+			text: 'Week 2',
+			backgroundColor: '#70cfeb'
+			},
+		]
+		};
+	
+		// render chart with width and height to
+		// fill the parent container CSS dimensions
+		zingchart.render({
+		id: 'twoBar',
+		data: twoBar,
+		height: '50%',
+		width: '100%'
+		});
+
+		const twoLine = {
+		type: 'line',
+		title: {
+			text: 'Hello World Demo',
+			fontSize: 16,
+			color: '#5d7d9a'
+		},
+		legend: {
+			draggable: true,
+		},
+		scaleX: {
+			// set scale label
+			label: {
+			text: 'Days'
+			},
+			// convert text on scale indices
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+		},
+		scaleY: {
+			// scale label with unicode character
+			label: {
+			text: 'Temperature (°F)'
+			}
+		},
+		plot: {
+			// animation docs here:
+			// https://www.zingchart.com/docs/tutorials/design-and-styling/chart-animation/#animation__effect
+			animation: {
+			effect: 'ANIMATION_EXPAND_BOTTOM',
+			method: 'ANIMATION_STRONG_EASE_OUT',
+			sequence: 'ANIMATION_BY_NODE',
+			speed: 275,
+			}
+		},
+		series: [{
+			// plot 1 values, linear data
+			values: [23, 20, 27, 29, 25, 17, 15],
+			text: 'Week 1',
+			backgroundColor: '#4d80a6'
+			},
+			{
+			// plot 2 values, linear data
+			values: [35, 42, 33, 49, 35, 47, 35],
+			text: 'Week 2',
+			backgroundColor: '#70cfeb'
+			},
+		]
+		};
+
+		var pie = {
+		type: "pie",
+		plot: {
+			borderColor: "#2B313B",
+			borderWidth: 5,
+			// slice: 90,
+			valueBox: {
+			placement: 'out',
+			text: '%t\n%npv%',
+			fontFamily: "Open Sans"
+			},
+			tooltip: {
+			fontSize: '18',
+			fontFamily: "Open Sans",
+			padding: "5 10",
+			text: "%npv%"
+			},
+			animation: {
+			effect: 2,
+			method: 5,
+			speed: 900,
+			sequence: 1,
+			delay: 3000
+			}
+		},
+		source: {
+			text: 'gs.statcounter.com',
+			fontColor: "#8e99a9",
+			fontFamily: "Open Sans"
+		},
+		title: {
+			fontColor: "#8e99a9",
+			text: 'Global Browser Usage',
+			align: "left",
+			offsetX: 10,
+			fontFamily: "Open Sans",
+			fontSize: 25
+		},
+		subtitle: {
+			offsetX: 10,
+			offsetY: 10,
+			fontColor: "#8e99a9",
+			fontFamily: "Open Sans",
+			fontSize: "16",
+			text: 'May 2016',
+			align: "left"
+		},
+		plotarea: {
+			margin: "20 0 0 0"
+		},
+		series: [{
+			values: [11.38],
+			text: "Internet Explorer",
+			backgroundColor: '#50ADF5',
+			},
+			{
+			values: [56.94],
+			text: "Chrome",
+			backgroundColor: '#FF7965',
+			detached: true
+			},
+			{
+			values: [14.52],
+			text: 'Firefox',
+			backgroundColor: '#FFCB45',
+			detached: true
+			},
+			{
+			text: 'Safari',
+			values: [9.69],
+			backgroundColor: '#6877e5'
+			},
+			{
+			text: 'Other',
+			values: [7.48],
+			backgroundColor: '#6FB07F'
+			}
+		]
+		};
+	
+		zingchart.render({
+		id: 'pie',
+		data: pie,
+		height: '100%',
+		width: '100%'
+		});
+	
+		// render chart with width and height to
+		// fill the parent container CSS dimensions
+		zingchart.render({
+			id: 'twoLine',
+			data: twoLine,
+			height: '50%',
+			width: '100%'
+		});
+	});
+	</script>
+</body>
+	
+</html>
+
