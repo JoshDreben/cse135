@@ -42,7 +42,8 @@
 	let mouseMovs = [0,0,0,0,0,0,0];
 	fetch('/api/activity').then((res)=> res.json().then((json) => {
 		json.map((row) => {
-			console.log((new Date(row.created)).getDay())
+			let row_day = ((new Date(row.created)).getDay());
+			console.log(JSON.parse(row.mouse_coords));
 		});}
 	));
 	window.addEventListener('load', function() {
