@@ -40,82 +40,80 @@
 	// because this Javascript is injected into the document head
 	let mouseClicks = [0,0,0,0,0,0,0];
 	let mouseMovs = [0,0,0,0,0,0,0];
-	let shouldRenderDoubleBar = 0;
-	fetch('/api/activity').then((res)=> res.json().then((json) => {
-		json.map((row) => {
-			let row_day = ((new Date(row.created)).getDay());
-			mouseMovs[row_day] += (JSON.parse(row.mouse_coords)).length;
-			mouseClicks[row_day] += (JSON.parse(row.mouse_clicks)).length;
-		});
-		shouldRenderDoubleBar = 1;
-	}
-	));
-	
 	window.addEventListener('load', function() {
 		// Javascript code to execute after DOM content
 	
 		// full ZingChart schema can be found here:
 		// https://www.zingchart.com/docs/api/json-configuration/
-		const twoBar = {
-		type: 'bar',
-		title: {
-			text: 'Hello World Demo',
-			fontSize: 16,
-			color: '#5d7d9a'
-		},
-		legend: {
-			draggable: true,
-		},
-		scaleX: {
-			// set scale label
-			label: {
-			text: 'Days'
-			},
-			// convert text on scale indices
-			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-		},
-		scaleY: {
-			// scale label with unicode character
-			label: {
-			text: 'Count'
-			}
-		},
-		plot: {
-			// animation docs here:
-			// https://www.zingchart.com/docs/tutorials/design-and-styling/chart-animation/#animation__effect
-			animation: {
-			effect: 'ANIMATION_EXPAND_BOTTOM',
-			method: 'ANIMATION_STRONG_EASE_OUT',
-			sequence: 'ANIMATION_BY_NODE',
-			speed: 275,
-			}
-		},
-		series: [{
-			// plot 1 values, linear data
-			values: mouseClicks, 
-			text: 'Clicks',
-			backgroundColor: '#4d80a6'
-			},
-			{
-			// plot 2 values, linear data
-			values: mouseMovs,
-			text: 'Mouse Movements',
-			backgroundColor: '#70cfeb'
-			},
-		],
-		refresh: {
-			interval: 200
-		}
+		fetch('/api/activity').then((res)=> res.json().then((json) => {
+			json.map((row) => {
+				let row_day = ((new Date(row.created)).getDay());
+				mouseMovs[row_day] += (JSON.parse(row.mouse_coords)).length;
+				mouseClicks[row_day] += (JSON.parse(row.mouse_clicks)).length;
+			});
+			const twoBar = {
+					type: 'bar',
+					title: {
+						text: 'Hello World Demo',
+						fontSize: 16,
+						color: '#5d7d9a'
+					},
+					legend: {
+						draggable: true,
+					},
+					scaleX: {
+						// set scale label
+						label: {
+						text: 'Days'
+						},
+						// convert text on scale indices
+						labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+					},
+					scaleY: {
+						// scale label with unicode character
+						label: {
+						text: 'Count'
+						}
+					},
+					plot: {
+						// animation docs here:
+						// https://www.zingchart.com/docs/tutorials/design-and-styling/chart-animation/#animation__effect
+						animation: {
+						effect: 'ANIMATION_EXPAND_BOTTOM',
+						method: 'ANIMATION_STRONG_EASE_OUT',
+						sequence: 'ANIMATION_BY_NODE',
+						speed: 275,
+						}
+					},
+					series: [{
+						// plot 1 values, linear data
+						values: mouseClicks, 
+						text: 'Clicks',
+						backgroundColor: '#4d80a6'
+						},
+						{
+						// plot 2 values, linear data
+						values: mouseMovs,
+						text: 'Mouse Movements',
+						backgroundColor: '#70cfeb'
+						},
+					],
+					refresh: {
+						interval: 200
+					}
 		};
 	
 		// render chart with width and height to
 		// fill the parent container CSS dimensions
-		zingchart.render({
-		id: 'twoBar',
-		data: twoBar,
-		height: '50%',
-		width: '100%'
-		});
+			zingchart.render({
+			id: 'twoBar',
+			data: twoBar,
+			height: '50%',
+			width: '100%'
+			});
+			}
+		));
+		
 
 		const twoLine = {
 		type: 'line',
