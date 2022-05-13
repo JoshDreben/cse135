@@ -43,8 +43,8 @@
 	fetch('/api/activity').then((res)=> res.json().then((json) => {
 		json.map((row) => {
 			let row_day = ((new Date(row.created)).getDay());
-			mouseMovs[row_day] += len(JSON.parse(row.mouse_coords));
-			mouseClicks[row_day] += len(JSON.parse(row.mouse_clicks));
+			mouseMovs[row_day] += (JSON.parse(row.mouse_coords)).length;
+			mouseClicks[row_day] += (JSON.parse(row.mouse_clicks)).length;
 		});}
 	));
 	window.addEventListener('load', function() {
