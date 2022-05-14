@@ -41,8 +41,8 @@
 	let mouseClicks = [0,0,0,0,0,0,0];
 	let keys_down = [0,0,0,0,0,0,0];
 
-	let todayMouseClicks = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-	let todayKeysDown = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	let todayMouseClicks = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+	let todayKeysDown = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 	function thisWeek(date) {
 		const todayObj = new Date();
 		const todayDate = todayObj.getDate();
@@ -81,9 +81,8 @@
 						mouseClicks[row_day] += (JSON.parse(row.mouse_clicks)).length;
 				}
 				if (isToday(new Date(row.created))) {
-					let row_hour = ((new Date(row.created)).getHours);
+					let row_hour = ((new Date(row.created)).getHours());
 					if (row.keys_down != "") {
-						console.log("here!");
 						todayKeysDown[row_hour] += (JSON.parse(row.keys_down)).length;
 					}
 					if (row.mouse_clicks != "") {
