@@ -82,11 +82,12 @@
 				}
 				if (isToday(new Date(row.created))) {
 					let row_hour = ((new Date(row.created)).getHours);
-					if (row.keys_down != "")
-						console.log("this hour!");
+					if (row.keys_down != "") {
 						todayKeysDown[row_hour] += (JSON.parse(row.keys_down)).length;
-					if (row.mouse_clicks != "")
+					}
+					if (row.mouse_clicks != "") {
 						todayMouseClicks[row_hour] += (JSON.parse(row.mouse_clicks)).length;
+					}
 				}
 			});
 			const twoBar = {
