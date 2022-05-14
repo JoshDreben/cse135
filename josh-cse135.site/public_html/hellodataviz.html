@@ -74,12 +74,12 @@
 			const twoBar = {
 					type: 'bar',
 					title: {
-						text: 'Hello World Demo',
+						text: "This Week's Clicks vs. Key Prseses",
 						fontSize: 16,
 						color: '#5d7d9a'
 					},
 					legend: {
-						draggable: true,
+						draggable: false,
 					},
 					scaleX: {
 						// set scale label
@@ -109,13 +109,13 @@
 						// plot 1 values, linear data
 						values: [mouseClicks[0], mouseClicks[1], mouseClicks[2], mouseClicks[3], mouseClicks[4], mouseClicks[5], mouseClicks[6]], 
 						text: 'Clicks',
-						backgroundColor: '#4d80a6'
+						backgroundColor: '#4e80a6'
 						},
 						{
 						// plot 2 values, linear data
 						values: [keys_down[0], keys_down[1], keys_down[2], keys_down[3], keys_down[4], keys_down[5], keys_down[6]], 
 						text: 'Keys Pressed',
-						backgroundColor: '#70cfeb'
+						backgroundColor: '#60cfeb'
 						},
 					],
 			};
