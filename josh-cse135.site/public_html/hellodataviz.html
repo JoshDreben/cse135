@@ -60,7 +60,7 @@
 	}
 
 	function isToday(date) {
-		const now = new Date();
+		const now = new Date(new Date().toLocaleString("en-US", {timeZone: "UTC"}));
 		const msBetweenDates = Math.abs(date.getTime() - now.getTime());
 		const hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
 		return hoursBetweenDates <= 24 && now.getDay() == date.getDay();
@@ -148,7 +148,7 @@
 			const twoLine = {
 				type: 'line',
 				title: {
-					text: "Today's Clicks vs. Key Presses",
+					text: "Today's Clicks vs. Key Presses (UTC)",
 					fontSize: 16,
 					color: '#5d7d9a'
 				},
