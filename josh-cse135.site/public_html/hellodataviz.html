@@ -82,6 +82,7 @@
 				}
 				if (isToday(new Date(row.created))) {
 					let row_hour = ((new Date(row.created)).getHours());
+					console.log(row_hour);
 					if (row.keys_down != "") {
 						todayKeysDown[row_hour] += (JSON.parse(row.keys_down)).length;
 					}
