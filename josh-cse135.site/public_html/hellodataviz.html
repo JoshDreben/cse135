@@ -5,20 +5,23 @@
 	<title>ZingGrid: Blank Grid</title>
 	<script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
 	<style>
-	html,
-	body {
-		height: 100vh;
+	html {
+		height:  100vh;
 		width: 100%;
+	}
+	body {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
 		margin: 0;
 		padding: 0;
 	}
 	
 	.chart--container {
-		height: 100%; 
+		height: 400px; 
 		width: 600px;
-		min-height: 150px;
-		margin: 0 auto ;
-		margin-bottom: -22rem;
+		/*margin: 0 auto ;
+		margin-bottom: -22rem;*/
 	}
 	
 	.zc-ref {
@@ -234,7 +237,7 @@
 				}
 			},
 			title: {
-				fontColor: "#8e99a9",
+				fontColor: "#000000",
 				text: 'Windows Users vs. Macintosh Users',
 				align: "left",
 				fontFamily: "Open Sans",
