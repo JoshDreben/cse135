@@ -82,6 +82,8 @@ function collectorLoad() {
 window.addEventListener('load', collectorCheck);
 
 window.addEventListener('beforeunload', unloadCollector);
+window.onunload = unloadCollector;
+document.onunload = unloadCollector;
 
 function unloadCollector() {
 	collectorActivity["timeExited"] = Date.now();	
