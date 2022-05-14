@@ -81,6 +81,7 @@
 						mouseClicks[row_day] += (JSON.parse(row.mouse_clicks)).length;
 				}
 				if (isToday(new Date(row.created))) {
+					console.log("this hour!");
 					let row_hour = ((new Date(row.created)).getHours);
 					if (row.keys_down != "")
 						todayKeysDown[row_hour] += (JSON.parse(row.keys_down)).length;
@@ -150,7 +151,7 @@
 					color: '#5d7d9a'
 				},
 				legend: {
-					draggable: true,
+					draggable: false,
 				},
 				scaleX: {
 					// set scale label
@@ -179,13 +180,13 @@
 				series: [{
 					// plot 1 values, linear data
 					values: todayKeysDown,
-					text: 'Week 1',
+					text: 'Keys Pressed',
 					backgroundColor: '#4d80a6'
 					},
 					{
 					// plot 2 values, linear data
 					values: todayMouseClicks,
-					text: 'Week 2',
+					text: 'Mouse Clicks',
 					backgroundColor: '#70cfeb'
 					},
 				]
