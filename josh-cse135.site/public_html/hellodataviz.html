@@ -61,9 +61,9 @@
 
 	function isToday(date) {
 		const now = new Date();
-		const msBetweenDates = Math.abs(then.getTime() - now.getTime());
+		const msBetweenDates = Math.abs(date.getTime() - now.getTime());
 		const hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
-		return hoursBetweenDates < 24
+		return hoursBetweenDates < 24;
 	}
 
 	window.addEventListener('load', function() {
