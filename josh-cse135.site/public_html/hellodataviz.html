@@ -40,6 +40,9 @@
 	// because this Javascript is injected into the document head
 	let mouseClicks = [0,0,0,0,0,0,0];
 	let keys_down = [0,0,0,0,0,0,0];
+
+	let todayMouseClicks = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	let todayKeysDown = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	function thisWeek(date) {
 		const todayObj = new Date();
 		const todayDate = todayObj.getDate();
@@ -56,6 +59,13 @@
 		return date >= firstDayOfWeek && date <= lastDayOfWeek;
 	}
 
+	function isToday(date) {
+		const now = new Date();
+		const msBetweenDates = Math.abs(then.getTime() - now.getTime());
+		const hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
+		return hoursBetweenDates < 24
+	}
+
 	window.addEventListener('load', function() {
 		// Javascript code to execute after DOM content
 	
@@ -70,13 +80,20 @@
 					if (row.mouse_clicks != "")
 						mouseClicks[row_day] += (JSON.parse(row.mouse_clicks)).length;
 				}
+				if (isToday(new Date(row.created))) {
+					let row_hour = ((new Date(row.created)).getHours);
+					if (row.keys_down != "")
+						todayKeysDown[row_hour] += (JSON.parse(row.keys_down)).length;
+					if (row.mouse_clicks != "")
+						todayMouseClicks[row_hour] += (JSON.parse(row.mouse_clicks)).length;
+				}
 			});
 			const twoBar = {
 					type: 'bar',
 					title: {
 						text: "This Week's Clicks vs. Key Presses",
 						fontSize: 16,
-						color: '#5d7d9a'
+						color: '#ffffff'
 					},
 					legend: {
 						draggable: false,
@@ -119,64 +136,67 @@
 						},
 					],
 			};
-	
 			zingchart.render({
-			id: 'twoBar',
-			data: twoBar,
-			height: '50%',
-			width: '100%'
+				id: 'twoBar',
+				data: twoBar,
+				height: '50%',
+				width: '100%'
 			});
-			}
-		));
-
-		const twoLine = {
-		type: 'line',
-		title: {
-			text: 'Hello World Demo',
-			fontSize: 16,
-			color: '#5d7d9a'
-		},
-		legend: {
-			draggable: true,
-		},
-		scaleX: {
-			// set scale label
-			label: {
-			text: 'Days'
-			},
-			// convert text on scale indices
-			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-		},
-		scaleY: {
-			// scale label with unicode character
-			label: {
-			text: 'Temperature (°F)'
-			}
-		},
-		plot: {
-			// animation docs here:
-			// https://www.zingchart.com/docs/tutorials/design-and-styling/chart-animation/#animation__effect
-			animation: {
-			effect: 'ANIMATION_EXPAND_BOTTOM',
-			method: 'ANIMATION_STRONG_EASE_OUT',
-			sequence: 'ANIMATION_BY_NODE',
-			speed: 275,
-			}
-		},
-		series: [{
-			// plot 1 values, linear data
-			values: [23, 20, 27, 29, 25, 17, 15],
-			text: 'Week 1',
-			backgroundColor: '#4d80a6'
-			},
-			{
-			// plot 2 values, linear data
-			values: [35, 42, 33, 49, 35, 47, 35],
-			text: 'Week 2',
-			backgroundColor: '#70cfeb'
-			},
-		]
-		};
+			const twoLine = {
+				type: 'line',
+				title: {
+					text: 'Hello World Demo',
+					fontSize: 16,
+					color: '#5d7d9a'
+				},
+				legend: {
+					draggable: true,
+				},
+				scaleX: {
+					// set scale label
+					label: {
+					text: 'Days'
+					},
+					// convert text on scale indices
+					labels: ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24']
+				},
+				scaleY: {
+					// scale label with unicode character
+					label: {
+					text: 'Count'
+					}
+				},
+				plot: {
+					// animation docs here:
+					// https://www.zingchart.com/docs/tutorials/design-and-styling/chart-animation/#animation__effect
+					animation: {
+					effect: 'ANIMATION_EXPAND_BOTTOM',
+					method: 'ANIMATION_STRONG_EASE_OUT',
+					sequence: 'ANIMATION_BY_NODE',
+					speed: 275,
+					}
+				},
+				series: [{
+					// plot 1 values, linear data
+					values: todayKeysDown,
+					text: 'Week 1',
+					backgroundColor: '#4d80a6'
+					},
+					{
+					// plot 2 values, linear data
+					values: todayMouseClicks,
+					text: 'Week 2',
+					backgroundColor: '#70cfeb'
+					},
+				]
+			};	
+			zingchart.render({
+				id: 'twoLine',
+				data: twoLine,
+				height: '50%',
+				width: '100%'
+			});
+		}));
 
 		var pie = {
 		type: "pie",
@@ -267,12 +287,7 @@
 	
 		// render chart with width and height to
 		// fill the parent container CSS dimensions
-		zingchart.render({
-			id: 'twoLine',
-			data: twoLine,
-			height: '50%',
-			width: '100%'
-		});
+	
 	});
 	</script>
 </body>
