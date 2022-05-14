@@ -210,38 +210,12 @@
 			});	
 			var pie = {
 			type: "pie",
-			plot: {
-				borderColor: "#2B313B",
-				borderWidth: 5,
-				// slice: 90,
-				valueBox: {
-				placement: 'out',
-				text: '%t\n%npv%',
-				fontFamily: "Open Sans"
-				},
-				tooltip: {
-				fontSize: '18',
-				fontFamily: "Open Sans",
-				padding: "5 10",
-				text: "%npv%"
-				},
-				animation: {
-				effect: 2,
-				method: 5,
-				speed: 900,
-				sequence: 1,
-				delay: 3000
-				}
-			},
 			title: {
 				fontColor: "#8e99a9",
 				text: 'Windows Users vs. Macintosh Users',
 				align: "left",
 				fontFamily: "Open Sans",
 				fontSize: 16 
-			},
-			plotarea: {
-				margin: "20 0 0 0"
 			},
 			series: [{
 				values: [totalMacintosh / (totalMacintosh + totalWindows)],
