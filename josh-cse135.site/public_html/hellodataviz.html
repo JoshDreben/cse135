@@ -63,7 +63,7 @@
 		const now = new Date();
 		const msBetweenDates = Math.abs(date.getTime() - now.getTime());
 		const hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
-		return hoursBetweenDates < 24;
+		return hoursBetweenDates < 12;
 	}
 
 	window.addEventListener('load', function() {
@@ -147,7 +147,7 @@
 			const twoLine = {
 				type: 'line',
 				title: {
-					text: 'Hello World Demo',
+					text: "Today's Clicks vs. Key Presses",
 					fontSize: 16,
 					color: '#5d7d9a'
 				},
