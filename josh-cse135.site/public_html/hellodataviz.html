@@ -36,7 +36,7 @@
 	<!-- CHART CONTAINER -->
 	<div id="twoBar" class="chart--container">
 	</div>
-	<div id="twoLine" class="chart--container">
+	<div id="threeLine" class="chart--container">
 	</div>
 	<div id="pie" class="chart--container">
 	</div>
@@ -48,6 +48,7 @@
 
 	let todayMouseClicks = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 	let todayKeysDown = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+	let idleTimeouts = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 	function thisWeek(date) {
 		const todayObj = new Date();
 		const todayDate = todayObj.getDate();
@@ -92,6 +93,9 @@
 					}
 					if (row.mouse_clicks != "") {
 						todayMouseClicks[row_hour] += (JSON.parse(row.mouse_clicks)).length;
+					}
+					if (row.idle_timeouts != "") {
+						idleTimeouts[row_hour] += (JSON.parse(row.idle_timeouts)).length;
 					}
 				}
 			});
@@ -149,7 +153,7 @@
 				height: '100%',
 				width: '100%'
 			});
-			const twoLine = {
+			const threeLine = {
 				type: 'line',
 				title: {
 					text: "Today's Clicks vs. Key Presses (UTC)",
@@ -184,22 +188,25 @@
 					}
 				},
 				series: [{
-					// plot 1 values, linear data
 					values: todayKeysDown,
 					text: 'Keys Pressed',
 					backgroundColor: '#4d80a6'
 					},
 					{
-					// plot 2 values, linear data
 					values: todayMouseClicks,
 					text: 'Mouse Clicks',
 					backgroundColor: '#70cfeb'
 					},
+					{
+					values: idleTimeouts,
+					text: 'Idle Timeouts',
+					backgroundColor: '#abcdef'
+					},
 				]
 			};	
 			zingchart.render({
-				id: 'twoLine',
-				data: twoLine,
+				id: 'threeLine',
+				data: threeLine,
 				height: '100%',
 				width: '100%'
 			});
