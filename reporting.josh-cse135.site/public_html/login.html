@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reporting | Login</title>
 	<script>
-		function login() {
-			console.log('here')
+		function login(event) {
+			event.preventDefault();
+			console.log('here');
 			let user = document.getElementsByName("username")[0].value;
 			let pass = document.getElementsByName("password")[0].value;
 			fetch(`https://reporting.josh-cse135.site/api/login.php`, {
@@ -22,7 +23,7 @@
 
   <body>
     <h1>reporting.josh-cse135.site Login</h2>
-	<form onsubmit="return login();">
+	<form onsubmit="this.login">
 		<input type="text" name="username" />
 		<input type="password" name="password" />
 		<button type="submit">Submit</button>
