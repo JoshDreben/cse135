@@ -4,15 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reporting | Login</title>
+    <script>
+      const login = (e) => {
+        e.preventDefault();
+        console.log("login!");
+      };
+    </script>
   </head>
 
   <body>
-    <h1>reporting.josh-cse135.site Login</h2>
-	<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-	<form action="/api/login.php" method="POST" target="dummyframe">
-		<input type="text" name="username" />
-		<input type="password" name="password" />
-		<button type="submit">Submit</button>
-	</form>
+    <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
+    <form action="javascript:login()" target="dummyframe">
+      <input type="text" name="username" />
+      <input type="password" name="password" />
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>
