@@ -21,7 +21,9 @@
 
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      console.log("Submitting form");
+      let user = document.getElementsByName("username")[0].value;
+      let pass = document.getElementsByName("password")[0].value;
+      console.log(user, pass);
     });
   </script>
 </html>
