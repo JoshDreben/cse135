@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reporting | Login</title>
     <script>
-      const login = (e) => {
+      function login(e) {
         e.preventDefault();
         console.log("login!");
-      };
+      }
     </script>
   </head>
 
   <body>
     <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
-    <form action="javascript:login()" target="dummyframe">
+    <form action="javascript:login" target="dummyframe">
       <input type="text" name="username" />
       <input type="password" name="password" />
       <button type="submit">Submit</button>
