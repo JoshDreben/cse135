@@ -4,11 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reporting | Login</title>
+	<script>
+		function login() {
+			let user = document.getElementsByName("username")[0].value;
+			let pass = document.getElementsByName("password")[0].value;
+			fetch(`https://reporting.josh-cse135.site/api/login.php`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({"user": user, "pass": pass}),
+			});
+		}
+	</script>
   </head>
 
   <body>
     <h1>reporting.josh-cse135.site Login</h2>
-	<form method="POST" action="/api/login.php">
+	<form action="" onsubmit="login()">
 		<input type="text" name="username" />
 		<input type="password" name="password" />
 		<button type="submit">Submit</button>
