@@ -6,6 +6,7 @@
     <title>Reporting | Login</title>
 	<script>
 		function login() {
+			console.log('here')
 			let user = document.getElementsByName("username")[0].value;
 			let pass = document.getElementsByName("password")[0].value;
 			fetch(`https://reporting.josh-cse135.site/api/login.php`, {
