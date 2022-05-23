@@ -164,8 +164,7 @@ function updateTimer() {
 }
 function resetIdleTimer() {
   idleTime = collectorTimer;
-  if (idleTime >= 2000) {
-    console.log("idle time: ", idleTime);
+  if (idleTime >= 1000) {
     collectorIdleTimeouts.push([idleTime, Date.now()]);
   }
   collectorTimer = 0;
