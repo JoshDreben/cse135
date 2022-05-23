@@ -10,15 +10,11 @@
     <form name="loginForm">
       <input type="text" name="username" />
       <input type="password" name="password" />
-      <button>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   </body>
   <script>
     loginForm = document.querySelector("form[name=loginForm]");
-    loginForm.querySelector("button").addEventListener("click", function () {
-      loginForm.requestSubmit();
-    });
-
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
       let user = document.getElementsByName("username")[0].value;
