@@ -19,7 +19,7 @@
       e.preventDefault();
       let user = document.getElementsByName("username")[0].value;
       let pass = document.getElementsByName("password")[0].value;
-      sessionStorage.setItem("user", { user, pass });
+      sessionStorage.setItem("user", { user: user, pass: pass });
       console.log("submitting!!");
       fetch(`https://reporting.josh-cse135.site/api/login.php`, {
         method: "POST",
