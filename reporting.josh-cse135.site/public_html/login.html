@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reporting | Login</title>
     <script>
-      function login(e) {
-        e.preventDefault();
+      function login() {
         console.log("login!");
       }
     </script>
@@ -14,7 +13,7 @@
 
   <body>
     <iframe name="dummyframe" id="dummyframe" style="display: none"></iframe>
-    <form action="javascript:login" target="dummyframe">
+    <form onsubmit="login();" target="dummyframe">
       <input type="text" name="username" />
       <input type="password" name="password" />
       <button type="submit">Submit</button>
