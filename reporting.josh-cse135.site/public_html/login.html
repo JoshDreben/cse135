@@ -23,6 +23,7 @@
       e.preventDefault();
       let user = document.getElementsByName("username")[0].value;
       let pass = document.getElementsByName("password")[0].value;
+      console.log("submitting!!");
       fetch(`https://reporting.josh-cse135.site/api/login.php`, {
         method: "POST",
         headers: {
