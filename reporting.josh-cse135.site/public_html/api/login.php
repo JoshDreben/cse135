@@ -26,5 +26,9 @@
 		echo json_encode($json_res);
 		exit();
 	}
-	echo json_encode($decoded);
+	$username = $decoded["user"];
+	$hashpass = password_hash($decoded["pass"]);
+	$userobj["user"] = $username;
+	$userobj["pass"] = $hashpass;
+	echo json_encode($userobj);
 ?>
