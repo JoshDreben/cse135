@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-      if (
-        sessionStorage.getItem("loggedIn") == null ||
-        sessionStorage.getItem("loggedIn") == 0
-      ) {
+      function loggedIn() {
+        return 0;
+      }
+      if (!loggedIn()) {
         window.location.replace(
           "https://reporting.josh-cse135.site/login.html"
         );
