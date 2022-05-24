@@ -35,14 +35,14 @@
 		$emparray[] = $row;
 	}
 	$users = $emparray;
-	if (empty($users[0]) || !password_verify($decoded["pass"],$users[0]["password"])) {
-		$json_res["status"] = 0;
-		$json_res["msg"] = "User not found or password is incorrect!";
-		echo json_encode($json_res);
-		exit();
-	}
 	$userobj["user"] = $username;
 	$userobj["pass"] = $decoded["pass"];
+	if (empty($users[0]) || !password_verify($decoded["pass"],$users[0]["password"])) {
+		$userobj["status"] = 0;
+		$userobj["msg"] = "User not found or password is incorrect!";
+		echo json_encode($userobj);
+		exit();
+	}
 	$userobj["status"] = 1;
 	echo json_encode($userobj);
 ?>
