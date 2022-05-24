@@ -45,6 +45,22 @@
 			echo json_encode($json_res);
 			exit();
 		}
+
+		// CHECK FOR USER WITH THIS USERNAME/EMAIL
+
+		$sql = "SELECT * FROM user WHERE username='$username' OR email='$username'";
+		$res = $con->query($sql);
+		$emparray = array();
+		while ($row = mysqli_fetch_assoc($res))
+		{
+			$emparray[] = $row;
+		}
+		if (count($emparray) > 0) 
+		{
+			$json_res["message"] = "Username/Email already exists!";
+			echo json_encode($json_res);
+			exit();
+		}
 		
 		$sql = "INSERT INTO user(username, password,type,email) VALUES('$username', '$password','$type', '$email')";
 		$con->query($sql);
