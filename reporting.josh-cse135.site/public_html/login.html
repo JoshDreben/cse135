@@ -78,6 +78,7 @@
     </form>
   </body>
   <script>
+    var loginErr = 0;
     loginForm = document.querySelector("form[name=loginForm]");
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -92,13 +93,18 @@
         body: JSON.stringify({ user: user, pass: pass }),
       }).then((res) => {
         res.json().then((json_res) => {
-          sessionStorage.setItem(
-            "user",
-            JSON.stringify({
-              user: json_res["user"],
-              pass: json_res["pass"],
-            })
-          );
+          if (json_res["status"] == 1) {
+            sessionStorage.setItem(
+              "user",
+              JSON.stringify({
+                user: json_res["user"],
+                pass: json_res["pass"],
+              })
+            );
+            window.location.replace("https://reporting.josh-cse135.site/");
+          } else {
+            loginErr = 1;
+          }
         });
       });
     });
