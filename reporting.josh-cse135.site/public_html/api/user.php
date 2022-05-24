@@ -31,12 +31,12 @@
 		$json_res = $decoded;
 
 		
-		$username = $json_res["user"];
-		$password = password_hash($json_res["pass"], PASSWORD_DEFAULT);
+		$username = $json_res["user"] || $json_res["username"];
+		$password = isset($json_res["pass"]) ? password_hash($json_res["pass"], PASSWORD_DEFAULT) : password_hash($json_res["password"], PASSWORD_DEFAULT)  ;
 		$email = $json_res["email"];
 		$type = $json_res["type"];
 
-		if(empty($username) || empty($json_res["pass"]))
+		if(empty($username) || (empty($json_res["pass"]) && empty($json_res["password"])))
 		{
 			mysqli_close($con);
 			http_response_code(400);
