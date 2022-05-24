@@ -61,7 +61,8 @@
 		{
 			$emparray[] = $row;
 		}
-		$json_res = $emparray;
+	//	$json_res = $emparray;
+		$json_res["msg"] = "no id get request";
 	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 		$id = $_GET["id"];
 		$sql = "SELECT * FROM user WHERE id=$id";
@@ -72,6 +73,7 @@
 			$emparray[] = $row;
 		}
 		$json_res = $emparray;	
+		$json_res["msg"] = "id get request";
 	} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET["id"])) {
 		$id = $_GET["id"];
 		$sql = "DELETE FROM user WHERE id=$id";
