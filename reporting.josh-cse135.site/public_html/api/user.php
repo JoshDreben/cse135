@@ -115,8 +115,8 @@
 		}
 
 		$json_res = $decoded;
-		$username = $json_res["user"];
-		$password = password_hash($json_res["pass"], PASSWORD_DEFAULT);
+		$username = isset($json_res["user"]) ? $json_res["user"] : $json_res["username"];
+		$password = isset($json_res["pass"]) ? password_hash($json_res["pass"], PASSWORD_DEFAULT) : password_hash($json_res["password"]);
 		$type = $json_res["type"];
 		$email = $json_res["email"];
 		$id  = $_GET["id"];
