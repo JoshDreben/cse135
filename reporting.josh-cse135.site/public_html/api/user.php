@@ -95,7 +95,7 @@
 		$sql = "DELETE FROM user WHERE id=$id";
 		$res = $con->query($sql);
 		$json_res = $res;
-	} else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_POST["id"])) {
+	} else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET["id"])) {
 		$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 		if(strcasecmp($contentType, 'application/json') != 0){
 			mysqli_close($con);
@@ -119,7 +119,7 @@
 		$password = isset($json_res["pass"]) ? password_hash($json_res["pass"], PASSWORD_DEFAULT) : password_hash($json_res["password"], PASSWORD_DEFAULT);
 		$type = $json_res["type"];
 		$email = $json_res["email"];
-		$id  = $_POST["id"];
+		$id  = $_GET["id"];
 		$sql = "UPDATE user SET username='$username', password='$password', type='$type', email='$email";
 		$res = $con->query($sql);
 		$json_res = $res;
