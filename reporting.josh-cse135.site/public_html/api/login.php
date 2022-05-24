@@ -44,6 +44,6 @@
 		exit();
 	}
 	$userobj["status"] = 1;
-	$userobj["type"] = $decoded["type"];
+	$userobj["type"] = $users[0]["type"];
 	echo json_encode($userobj);
 ?>
