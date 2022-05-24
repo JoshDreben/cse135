@@ -23,7 +23,8 @@
         height: 100%;
         padding: 1rem;
       }
-      #logout {
+      #logout,
+      #usermgmt_link {
         background-color: transparent;
         border: 0 none;
         text-decoration: underline;
@@ -33,12 +34,18 @@
         top: 1rem;
         right: 1rem;
       }
+
+      #usermgmt_link {
+        bottom: 1rem;
+        right: 1rem;
+      }
     </style>
   </head>
 
   <body>
     <button id="logout">Log Out</button>
     <h1>Reporting Dashboard</h1>
+    <button id="usermgmt_link" style="display: none">User Management</button>
   </body>
   <script>
     let btn = document.getElementById("logout");

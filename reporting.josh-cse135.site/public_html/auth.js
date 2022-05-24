@@ -1,3 +1,8 @@
+function enableAdminDash() {
+  let user_link = document.getElementById("usermgmt");
+  if (user_link == null) return;
+  user_link.style.display = "block";
+}
 function redirectToLogin() {
   window.location.replace("https://reporting.josh-cse135.site/login.html");
 }
@@ -15,6 +20,7 @@ function loggedIn() {
   }).then((res) => {
     res.json().then((json_res) => {
       if (json_res["status"] == 1) {
+        if (json_res["type"] == "admin") enableAdminDash();
         return;
       } else {
         redirectToLogin();
