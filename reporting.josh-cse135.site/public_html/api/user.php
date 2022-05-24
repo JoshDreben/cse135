@@ -61,8 +61,8 @@
 		{
 			$emparray[] = $row;
 		}
-	//	$json_res = $emparray;
-		$json_res["msg"] = "no id get request";
+		$json_res = $emparray;
+		$json_res = $res;
 	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 		$id = $_GET["id"];
 		$sql = "SELECT * FROM user WHERE id=$id";
