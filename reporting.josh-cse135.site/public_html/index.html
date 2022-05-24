@@ -9,7 +9,6 @@
         if (user_obj == null) return 0;
         let user = JSON.parse(user_obj)["user"];
         let pass = JSON.parse(user_obj)["pass"];
-        let status = JSON.parse(user_obj)["status"];
         console.log(user, pass, status);
         fetch(`https://reporting.josh-cse135.site/api/login.php`, {
           method: "POST",
@@ -19,6 +18,7 @@
           body: JSON.stringify({ user: user, pass: pass }),
         }).then((res) => {
           res.json().then((json_res) => {
+            console.log(json_res);
             if (json_res["status"] == 1) {
               return 1;
             }
