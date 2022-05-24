@@ -42,7 +42,7 @@
 		exit();
 	}
 	$userobj["user"] = $username;
-	$userobj["pass"] = $users[0]["password"];
+	$userobj["pass"] = $decoded["pass"];
 	$userobj["status"] = 1;
 	echo json_encode($userobj);
 ?>
