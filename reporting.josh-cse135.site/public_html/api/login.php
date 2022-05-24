@@ -1,7 +1,7 @@
 <?php
 	header('Content-Type: application/json');
 	header('Cache-Control: no-cache');
-	$res = NULL;
+	$json_res = NULL;
 	$con = mysqli_connect("db-mysql-sfo3-98726-do-user-11245821-0.b.db.ondigitalocean.com:25060","doadmin","AVNS_Q91stfvIS6ImiPP","cse135");
 	if (mysqli_connect_errno()){
 		http_response_code(500);
@@ -27,8 +27,22 @@
 		exit();
 	}
 	$username = $decoded["user"];
-	$hashpass = password_hash($decoded["pass"], PASSWORD_DEFAULT);
+	$sql = "SELECT * FROM user WHERE username='$username' OR email='$username'";
+	$res = $con->query($sql);
+	$emparray = array();
+	while ($row = mysqli_fetch_assoc($res))
+	{
+		$emparray[] = $row;
+	}
+	$users = $emparray;
+	if (empty($users[0]) || !password_verify($decoded["pass"],$users[0]["password"])) {
+		$json_res["status"] = 0;
+		$json_res["msg"] = "User not found or password is incorrect!";
+		echo json_encode($json_res);
+		exit();
+	}
 	$userobj["user"] = $username;
-	$userobj["pass"] = $hashpass;
+	$userobj["pass"] = $users[0]["password"];
+	$userobj["status"] = 1;
 	echo json_encode($userobj);
 ?>
