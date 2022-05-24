@@ -9,7 +9,7 @@
         if (user_obj == null) return 0;
         let user = JSON.parse(user_obj)["user"];
         let pass = JSON.parse(user_obj)["pass"];
-        let status = 1 == json_res["status"];
+        let status = 1 == JSON.parse(user_obj)["status"];
         console.log(user, pass);
         fetch(`https://reporting.josh-cse135.site/api/login.php`, {
           method: "POST",
