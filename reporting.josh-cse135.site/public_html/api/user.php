@@ -119,7 +119,7 @@
 		$password = isset($json_res["pass"]) ? password_hash($json_res["pass"], PASSWORD_DEFAULT) : password_hash($json_res["password"]);
 		$type = $json_res["type"];
 		$email = $json_res["email"];
-		$id  = $_GET["id"];
+		$id  = $_POST["id"];
 		$sql = "UPDATE user SET username='$username', password='$password', type='$type', email='$email";
 		$res = $con->query($sql);
 		$json_res = $res;
