@@ -43,4 +43,12 @@
     >
     </zing-grid>
   </body>
+  <script>
+    let btn = document.getElementById("logout");
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      sessionStorage.clear();
+      window.location.replace("https://reporting.josh-cse135.site/login.html");
+    });
+  </script>
 </html>
