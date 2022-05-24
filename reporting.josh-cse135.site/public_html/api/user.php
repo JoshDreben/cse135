@@ -63,8 +63,14 @@
 		}
 		
 		$sql = "INSERT INTO user(username, password,type,email) VALUES('$username', '$password','$type', '$email')";
-		$con->query($sql);
+		$res = $con->query($sql);
+		$emparray = array();
+		while ($row = mysqli_fetch_assoc($res))
+		{
+			$emparray[] = $row;
+		}
 		$json_res = NULL;
+		$json_res["id"] = $emparray[0]["id"];
 		$json_res["username"] = $username;
 		$json_res["password"] = $password;
 		$json_res["type"] = $type;
