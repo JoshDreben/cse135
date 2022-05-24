@@ -19,17 +19,17 @@
           res.json().then((json_res) => {
             console.log(json_res);
             if (json_res["status"] == 1) {
-              return 1;
+              return;
+            } else {
+              window.location.replace(
+                "https://reporting.josh-cse135.site/login.html"
+              );
             }
           });
         });
         return 0;
       }
-      //if (!loggedIn()) {
-      // window.location.replace(
-      ("https://reporting.josh-cse135.site/login.html");
-      //  );
-      //}
+      loggedIn();
     </script>
     <noscript>
       <meta http-equiv="refresh" content="100; URL=/login.html" />
