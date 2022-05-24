@@ -120,7 +120,7 @@
 		$type = $json_res["type"];
 		$email = $json_res["email"];
 		$id  = $_GET["id"];
-		$sql = "UPDATE user SET username='$username', password='$password', type='$type', email='$email";
+		$sql = "UPDATE user SET username='$username', password='$password', type='$type', email='$email' WHERE id='$id'";
 		$res = $con->query($sql);
 		$json_res = $res;
 	} else {
