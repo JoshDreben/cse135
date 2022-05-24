@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
+      function redirectToLogin() {
+        window.location.replace(
+          "https://reporting.josh-cse135.site/login.html"
+        );
+      }
       function loggedIn() {
         let user_obj = sessionStorage.getItem("user");
-        if (user_obj == null) return 0;
+        if (user_obj == null) redirectToLogin();
         let user = JSON.parse(user_obj)["user"];
         let pass = JSON.parse(user_obj)["pass"];
         fetch(`https://reporting.josh-cse135.site/api/login.php`, {
@@ -17,17 +22,14 @@
           body: JSON.stringify({ user: user, pass: pass }),
         }).then((res) => {
           res.json().then((json_res) => {
-            console.log(json_res);
             if (json_res["status"] == 1) {
               return;
             } else {
-              window.location.replace(
-                "https://reporting.josh-cse135.site/login.html"
-              );
+              redirectToLogin();
             }
           });
         });
-        return 0;
+        redirectToLogin();
       }
       loggedIn();
     </script>
