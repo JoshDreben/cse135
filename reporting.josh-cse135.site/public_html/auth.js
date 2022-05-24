@@ -1,7 +1,7 @@
 function enableAdminDash() {
   let user_link = document.getElementById("usermgmt");
   if (user_link == null) return;
-  user_link.style.display = "block";
+  user_link.style.display = "inherit";
 }
 function redirectToLogin() {
   window.location.replace("https://reporting.josh-cse135.site/login.html");
