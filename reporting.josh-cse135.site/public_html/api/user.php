@@ -62,7 +62,6 @@
 			$emparray[] = $row;
 		}
 		$json_res = $emparray;
-		$json_res = mysqli_error($con);
 	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 		$id = $_GET["id"];
 		$sql = "SELECT * FROM user WHERE id=$id";
