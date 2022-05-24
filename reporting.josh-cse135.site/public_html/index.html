@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <button id="logout">Log Out</button>
     <h1>Reporting Dashboard</h1>
   </body>
+  <script>
+    let btn = document.getElementById("logout");
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      sessionStorage.clear();
+      window.location.replace("https://reporting.josh-cse135.site/login.html");
+    });
+  </script>
 </html>
