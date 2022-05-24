@@ -33,6 +33,7 @@
 		
 		$username = $json_res["user"];
 		$password = password_hash($json_res["pass"], PASSWORD_DEFAULT);
+		$type = $json_res["type"];
 
 		if(empty($username) || empty($json_res["pass"]))
 		{
@@ -44,7 +45,7 @@
 			exit();
 		}
 		
-		$sql = "INSERT INTO user(username, password) VALUES('$username', '$password')";
+		$sql = "INSERT INTO user(username, password,type) VALUES('$username', '$password','$type')";
 		$con->query($sql);
 	} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET["id"])) {
 		// POST REQUEST ON OLD RECORD (not allowed)
@@ -72,7 +73,6 @@
 			$emparray[] = $row;
 		}
 		$json_res = $emparray;	
-		$json_res["msg"] = "id get request";
 	} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && isset($_GET["id"])) {
 		$id = $_GET["id"];
 		$sql = "DELETE FROM user WHERE id=$id";
@@ -100,8 +100,9 @@
 		$json_res = $decoded;
 		$username = $json_res["user"];
 		$password = password_hash($json_res["pass"], PASSWORD_DEFAULT);
+		$type = $json_res["type"];
 		$id  = $_GET["id"];
-		$sql = "UPDATE user SET username='$username', password='$password'";
+		$sql = "UPDATE user SET username='$username', password='$password', type='$type'";
 		$res = $con->query($sql);
 		$json_res = $res;
 	} else {
