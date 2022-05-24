@@ -63,6 +63,9 @@
 		}
 		
 		$sql = "INSERT INTO user(username, password,type,email) VALUES('$username', '$password','$type', '$email')";
+		$con->query($sql);
+
+		$sql = "SELECT * FROM user WHERE username='$username'";
 		$res = $con->query($sql);
 		$emparray = array();
 		while ($row = mysqli_fetch_assoc($res))
