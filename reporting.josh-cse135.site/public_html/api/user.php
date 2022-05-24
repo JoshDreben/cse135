@@ -64,6 +64,11 @@
 		
 		$sql = "INSERT INTO user(username, password,type,email) VALUES('$username', '$password','$type', '$email')";
 		$con->query($sql);
+		$json_res = NULL;
+		$json_res["username"] = $username;
+		$json_res["password"] = $password;
+		$json_res["type"] = $type;
+		$json_res["email"] = $email;
 	} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET["id"])) {
 		// POST REQUEST ON OLD RECORD (not allowed)
 		http_response_code(400);
