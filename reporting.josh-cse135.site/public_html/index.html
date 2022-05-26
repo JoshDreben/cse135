@@ -10,9 +10,12 @@
     </noscript>
     <script>
       var day_range = 2;
-      fetch(`https://reporting.josh-cse135.site/api/dash?${day_range}`, {
-        method: "GET",
-      }).then((res) =>
+      fetch(
+        `https://reporting.josh-cse135.site/api/dash?day_range=${day_range}`,
+        {
+          method: "GET",
+        }
+      ).then((res) =>
         res.json().then((json_res) => {
           console.log(json_res);
         })
