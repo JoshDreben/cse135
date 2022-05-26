@@ -8,20 +8,6 @@
     <noscript>
       <meta http-equiv="refresh" content="100; URL=/login.html" />
     </noscript>
-    <script>
-      var day_range = 2;
-      var dash_data = null;
-      fetch(
-        `https://reporting.josh-cse135.site/api/dash?day_range=${day_range}`,
-        {
-          method: "GET",
-        }
-      ).then((res) =>
-        res.json().then((json_res) => {
-          dash_data = json_res[0];
-        })
-      );
-    </script>
     <style>
       * {
         padding: 0;
@@ -85,9 +71,21 @@
       sessionStorage.clear();
       window.location.replace("https://reporting.josh-cse135.site/login.html");
     });
+    var day_range = 2;
+    var dash_data = null;
     let fastData = document.getElementById("fast-data");
-    let sessionCnt = document.createElement("session-cnt");
-    sessionCnt.innerHTML = dash_data["sessions"];
-    fasstData.appendChild(sessionCnt);
+    fetch(
+      `https://reporting.josh-cse135.site/api/dash?day_range=${day_range}`,
+      {
+        method: "GET",
+      }
+    ).then((res) =>
+      res.json().then((json_res) => {
+        dash_data = json_res[0];
+        let sessionCnt = document.createElement("session-cnt");
+        sessionCnt.innerHTML = dash_data["sessions"];
+        fastData.appendChild(sessionCnt);
+      })
+    );
   </script>
 </html>
