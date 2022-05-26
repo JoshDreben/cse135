@@ -3,11 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporting | Dashboard</title>
     <script src="./auth.js"></script>
     <noscript>
       <meta http-equiv="refresh" content="100; URL=/login.html" />
     </noscript>
-    <title>Reporting | Dashboard</title>
+    <script>
+      var day_range = 2;
+      fetch(`https://reporting.josh-cse135.site/api/dash?${day_range}`, {
+        method: "GET",
+      }).then((res) =>
+        res.json().then((json_res) => {
+          console.log(json_res);
+        })
+      );
+    </script>
     <style>
       * {
         padding: 0;
