@@ -126,9 +126,9 @@
         avgLoad.innerHTML = "Average Load Time (ms): " + dash_data["avg_load"];
         fastData.appendChild(avgLoad);
 
-        let totalMacintosh = int(json_res["num_mac"]);
-        let totalWindows = int(json_res["num_win"]);
-        let totalLinux = int(json_res["num_lin"]);
+        let totalMacintosh = parseInt(json_res["num_mac"]);
+        let totalWindows = parseInt(json_res["num_win"]);
+        let totalLinux = parseInt(json_res["num_lin"]);
         var pie = {
           type: "pie",
           plot: {
