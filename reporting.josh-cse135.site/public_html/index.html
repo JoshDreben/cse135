@@ -99,9 +99,13 @@
       >User Management</a
     >
     <div id="fast-data"></div>
-    <div id="charts"><div id="pie" class="chart--container"></div></div>
+    <div id="pie" class="chart--container"></div>
   </body>
   <script>
+    ZC.LICENSE = [
+      "569d52cefae586f634c54f86dc99e6a9",
+      "b55b025e438fa8a98e32482b5f768ff5",
+    ]; // window:load event for Javascript to run after HTML
     let btn = document.getElementById("logout");
     btn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -126,9 +130,9 @@
         avgLoad.innerHTML = "Average Load Time (ms): " + dash_data["avg_load"];
         fastData.appendChild(avgLoad);
 
-        let totalMacintosh = parseInt(json_res["num_mac"]);
-        let totalWindows = parseInt(json_res["num_win"]);
-        let totalLinux = parseInt(json_res["num_lin"]);
+        var totalMacintosh = parseInt(json_res["num_mac"]);
+        var totalWindows = parseInt(json_res["num_win"]);
+        var totalLinux = parseInt(json_res["num_lin"]);
         var pie = {
           type: "pie",
           plot: {
