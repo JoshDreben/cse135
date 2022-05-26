@@ -126,8 +126,9 @@
         avgLoad.innerHTML = "Average Load Time (ms): " + dash_data["avg_load"];
         fastData.appendChild(avgLoad);
 
-        let totalMacintosh = json_res["mac_cnt"];
-        let totalWindows = json_res["win_cnt"];
+        let totalMacintosh = json_res["num_mac"];
+        let totalWindows = json_res["num_win"];
+        let totalLinux = json_res["num_lin"];
         var pie = {
           type: "pie",
           plot: {
@@ -162,15 +163,26 @@
           },
           series: [
             {
-              values: [totalMacintosh / (totalMacintosh + totalWindows)],
+              values: [
+                totalMacintosh / (totalMacintosh + totalWindows + totalLinux),
+              ],
               text: "Macintosh",
               backgroundColor: "#50ADF5",
             },
             {
-              values: [totalWindows / (totalMacintosh + totalWindows)],
+              values: [
+                totalWindows / (totalMacintosh + totalWindows + totalLinux),
+              ],
               text: "Windows",
               backgroundColor: "#FF7965",
               detached: true,
+            },
+            {
+              values: [
+                totalLinux / (totalMacintosh + totalWindows + totalLinux),
+              ],
+              text: "Linux",
+              backgroundColor: "#13C4A3",
             },
           ],
         };
