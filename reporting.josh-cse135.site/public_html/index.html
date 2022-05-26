@@ -61,7 +61,6 @@
         width: 100%;
         display: flex;
         justify-content: space-evenly;
-        align-items: center;
       }
 
       #fast-data > p {
@@ -105,10 +104,10 @@
       res.json().then((json_res) => {
         dash_data = json_res[0];
         let sessionCnt = document.createElement("p");
-        sessionCnt.innerHTML = "Session Count" + dash_data["sessions"];
+        sessionCnt.innerHTML = "Session Count: " + dash_data["sessions"];
         fastData.appendChild(sessionCnt);
         let avgLoad = document.createElement("p");
-        avgLoad.innerHTML = "Average Load Time (ms)" + dash_data["avg_load"];
+        avgLoad.innerHTML = "Average Load Time (ms): " + dash_data["avg_load"];
         fastData.appendChild(avgLoad);
       })
     );
