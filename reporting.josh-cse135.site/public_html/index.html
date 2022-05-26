@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reporting | Dashboard</title>
+    <script
+      nonce="undefined"
+      src="https://cdn.zingchart.com/zingchart.min.js"
+    ></script>
     <script src="./auth.js"></script>
     <noscript>
       <meta http-equiv="refresh" content="100; URL=/login.html" />
@@ -14,6 +18,16 @@
         margin: 0;
         box-sizing: border-box;
         font-family: Arial, Helvetica, sans-serif;
+      }
+      .chart--container {
+        height: 400px;
+        width: 600px;
+        /*margin: 0 auto ;
+		margin-bottom: -22rem;*/
+      }
+
+      .zc-ref {
+        display: none;
       }
       html {
         width: 100%;
@@ -58,6 +72,7 @@
       }
 
       #fast-data {
+        margin-top: 1rem;
         width: 100%;
         display: flex;
         align-items: center;
@@ -84,6 +99,7 @@
       >User Management</a
     >
     <div id="fast-data"></div>
+    <div id="charts"><div id="pie" class="chart--container"></div></div>
   </body>
   <script>
     let btn = document.getElementById("logout");
@@ -109,6 +125,62 @@
         let avgLoad = document.createElement("p");
         avgLoad.innerHTML = "Average Load Time (ms): " + dash_data["avg_load"];
         fastData.appendChild(avgLoad);
+
+        let totalMacintosh = json_res["mac_cnt"];
+        let totalWindows = json_res["win_cnt"];
+        var pie = {
+          type: "pie",
+          plot: {
+            borderColor: "#2B313B",
+            borderWidth: 5,
+            // slice: 90,
+            valueBox: {
+              placement: "out",
+              text: "%t\n%npv%",
+              fontFamily: "Open Sans",
+            },
+            tooltip: {
+              fontSize: "18",
+              fontFamily: "Open Sans",
+              padding: "5 10",
+              text: "%npv%",
+            },
+            animation: {
+              effect: 2,
+              method: 5,
+              speed: 900,
+              sequence: 1,
+              delay: 3000,
+            },
+          },
+          title: {
+            fontColor: "#000000",
+            text: "Windows Users vs. Macintosh Users",
+            align: "left",
+            fontFamily: "Open Sans",
+            fontSize: 16,
+          },
+          series: [
+            {
+              values: [totalMacintosh / (totalMacintosh + totalWindows)],
+              text: "Macintosh",
+              backgroundColor: "#50ADF5",
+            },
+            {
+              values: [totalWindows / (totalMacintosh + totalWindows)],
+              text: "Windows",
+              backgroundColor: "#FF7965",
+              detached: true,
+            },
+          ],
+        };
+
+        zingchart.render({
+          id: "pie",
+          data: pie,
+          height: "100%",
+          width: "100%",
+        });
       })
     );
   </script>
