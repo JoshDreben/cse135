@@ -132,6 +132,8 @@
         res.json().then((json_res) => {
           dash_data = json_res[0];
           let sessionCnt = document.createElement("p");
+
+          fastData.innerHTML = "";
           sessionCnt.innerHTML = "Session Count: " + dash_data["sessions"];
           fastData.appendChild(sessionCnt);
           let avgLoad = document.createElement("p");
