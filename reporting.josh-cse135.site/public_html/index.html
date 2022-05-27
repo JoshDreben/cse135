@@ -95,6 +95,7 @@
   <body>
     <button id="logout">Log Out</button>
     <h1 id="title">Reporting Dashboard</h1>
+    <input type="text" id="day-range" />
     <a href="./users.html" id="usermgmt" style="display: none"
       >User Management</a
     >
@@ -112,92 +113,102 @@
       sessionStorage.clear();
       window.location.replace("https://reporting.josh-cse135.site/login.html");
     });
-    var day_range = 2;
-    var dash_data = null;
-    let fastData = document.getElementById("fast-data");
-    fetch(
-      `https://reporting.josh-cse135.site/api/dash?day_range=${day_range}`,
-      {
-        method: "GET",
+    let dayRangeInput = document.getElementById("day-range");
+    dayRangeInput.addEventListener("change", (event) => {
+      if (parseInt(event.target.value) > 0) {
+        updateDash(parseInt(event.target.value));
       }
-    ).then((res) =>
-      res.json().then((json_res) => {
-        dash_data = json_res[0];
-        let sessionCnt = document.createElement("p");
-        sessionCnt.innerHTML = "Session Count: " + dash_data["sessions"];
-        fastData.appendChild(sessionCnt);
-        let avgLoad = document.createElement("p");
-        avgLoad.innerHTML = "Average Load Time (ms): " + dash_data["avg_load"];
-        fastData.appendChild(avgLoad);
+    });
+    function updateDash(day) {
+      var day_range = day;
+      var dash_data = null;
+      let fastData = document.getElementById("fast-data");
+      fetch(
+        `https://reporting.josh-cse135.site/api/dash?day_range=${day_range}`,
+        {
+          method: "GET",
+        }
+      ).then((res) =>
+        res.json().then((json_res) => {
+          dash_data = json_res[0];
+          let sessionCnt = document.createElement("p");
+          sessionCnt.innerHTML = "Session Count: " + dash_data["sessions"];
+          fastData.appendChild(sessionCnt);
+          let avgLoad = document.createElement("p");
+          avgLoad.innerHTML =
+            "Average Load Time (ms): " + dash_data["avg_load"];
+          fastData.appendChild(avgLoad);
 
-        var totalMacintosh = parseInt(dash_data["num_mac"]);
-        var totalWindows = parseInt(dash_data["num_win"]);
-        var totalLinux = parseInt(dash_data["num_lin"]);
-        var pie = {
-          type: "pie",
-          plot: {
-            borderColor: "#2B313B",
-            borderWidth: 5,
-            // slice: 90,
-            valueBox: {
-              placement: "out",
-              text: "%t\n%npv%",
+          var totalMacintosh = parseInt(dash_data["num_mac"]);
+          var totalWindows = parseInt(dash_data["num_win"]);
+          var totalLinux = parseInt(dash_data["num_lin"]);
+          var pie = {
+            type: "pie",
+            plot: {
+              borderColor: "#2B313B",
+              borderWidth: 5,
+              // slice: 90,
+              valueBox: {
+                placement: "out",
+                text: "%t\n%npv%",
+                fontFamily: "Open Sans",
+              },
+              tooltip: {
+                fontSize: "18",
+                fontFamily: "Open Sans",
+                padding: "5 10",
+                text: "%npv%",
+              },
+              animation: {
+                effect: 2,
+                method: 5,
+                speed: 900,
+                sequence: 1,
+                delay: 3000,
+              },
+            },
+            title: {
+              fontColor: "#000000",
+              text: "Windows Users vs. Macintosh Users",
+              align: "left",
               fontFamily: "Open Sans",
+              fontSize: 16,
             },
-            tooltip: {
-              fontSize: "18",
-              fontFamily: "Open Sans",
-              padding: "5 10",
-              text: "%npv%",
-            },
-            animation: {
-              effect: 2,
-              method: 5,
-              speed: 900,
-              sequence: 1,
-              delay: 3000,
-            },
-          },
-          title: {
-            fontColor: "#000000",
-            text: "Windows Users vs. Macintosh Users",
-            align: "left",
-            fontFamily: "Open Sans",
-            fontSize: 16,
-          },
-          series: [
-            {
-              values: [
-                totalMacintosh / (totalMacintosh + totalWindows + totalLinux),
-              ],
-              text: "Macintosh",
-              backgroundColor: "#50ADF5",
-            },
-            {
-              values: [
-                totalWindows / (totalMacintosh + totalWindows + totalLinux),
-              ],
-              text: "Windows",
-              backgroundColor: "#FF7965",
-              detached: true,
-            },
-            {
-              values: [
-                totalLinux / (totalMacintosh + totalWindows + totalLinux),
-              ],
-              text: "Linux",
-              backgroundColor: "#13C4A3",
-            },
-          ],
-        };
+            series: [
+              {
+                values: [
+                  totalMacintosh / (totalMacintosh + totalWindows + totalLinux),
+                ],
+                text: "Macintosh",
+                backgroundColor: "#50ADF5",
+              },
+              {
+                values: [
+                  totalWindows / (totalMacintosh + totalWindows + totalLinux),
+                ],
+                text: "Windows",
+                backgroundColor: "#FF7965",
+                detached: true,
+              },
+              {
+                values: [
+                  totalLinux / (totalMacintosh + totalWindows + totalLinux),
+                ],
+                text: "Linux",
+                backgroundColor: "#13C4A3",
+              },
+            ],
+          };
 
-        zingchart.render({
-          id: "pie",
-          data: pie,
-          height: "100%",
-          width: "100%",
-        });
-      })
-    );
+          zingchart.render({
+            id: "pie",
+            data: pie,
+            height: "100%",
+            width: "100%",
+          });
+        })
+      );
+    }
+    updateDash(3);
   </script>
 </html>
