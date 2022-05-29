@@ -21,12 +21,10 @@
 	$sql = "CALL call_dashboard($day_range)";
 	$res = $con->query($sql);
 	$emparray = array();
-	while ($row = mysqli_fetch_assoc($res[0]))
+	while ($row = mysqli_fetch_assoc($res))
 	{
 		$emparray[] = $row;
 	}
-	$activity = $emparray;
-	while ($row = mysqli_fetch_assoc($res[1]))
-	$static = $emparray;
-	echo [json_encode($activity), json_encode($static)];
+	$dashboard = $emparray;
+	echo json_encode($dashboard);
 ?>
