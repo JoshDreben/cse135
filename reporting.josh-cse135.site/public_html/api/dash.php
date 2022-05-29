@@ -20,7 +20,7 @@
 	$day_range = $_GET["day_range"];
 	$sql = "CALL call_dashboard($day_range)";
 	$res = $con->query($sql);
-	echo $res;
+	echo json_encode($res);
 	$emparray = array();
 	while ($row = mysqli_fetch_assoc($res))
 	{
