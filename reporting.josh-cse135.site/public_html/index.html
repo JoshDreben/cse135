@@ -161,13 +161,11 @@
         res.json().then((json_res) => {
           dash_data = json_res[0];
           let sessionCnt = document.createElement("p");
-          sessionCnt.className = "count";
 
           fastData.innerHTML = "";
           sessionCnt.innerHTML = "Session Count: " + dash_data["sessions"];
           fastData.appendChild(sessionCnt);
           let avgLoad = document.createElement("p");
-          avgLoad.className = "count";
           avgLoad.innerHTML =
             "Average Load Time (ms): " + dash_data["avg_load"];
           fastData.appendChild(avgLoad);
