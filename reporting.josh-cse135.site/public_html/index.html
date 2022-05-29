@@ -137,6 +137,7 @@
     >
     <div id="fast-data"></div>
     <div id="pie" class="chart--container"></div>
+    <div id="twoBar" class="chart--container"></div>
   </body>
   <script>
     ZC.LICENSE = [
@@ -170,6 +171,7 @@
       ).then((res) =>
         res.json().then((json_res) => {
           dash_data = json_res["dash"][0];
+          activity_data = json_res["activity"];
           let sessionCnt = document.createElement("p");
 
           fastData.innerHTML = "";
@@ -244,6 +246,70 @@
           zingchart.render({
             id: "pie",
             data: pie,
+            height: "100%",
+            width: "100%",
+          });
+
+          let twoBarXLabel = [];
+          let mouse_clicks = [];
+          let keys_down = [];
+          activity_data.map((row) => {
+            twoBarXLabel.push(row["created"]);
+            mouse_clicks.push(row["mouse_clicks"]);
+            keys_down.push(row["keys_down"]);
+          });
+          const twoBar = {
+            type: "bar",
+            title: {
+              text: "This Week's Clicks vs. Key Presses",
+              fontSize: 16,
+              color: "#000000",
+            },
+            legend: {
+              draggable: false,
+            },
+            scaleX: {
+              // set scale label
+              label: {
+                text: "Days",
+              },
+              // convert text on scale indices
+              labels: twoBarXLabel,
+            },
+            scaleY: {
+              // scale label with unicode character
+              label: {
+                text: "Count",
+              },
+            },
+            plot: {
+              // animation docs here:
+              // https://www.zingchart.com/docs/tutorials/design-and-styling/chart-animation/#animation__effect
+              animation: {
+                effect: "ANIMATION_EXPAND_BOTTOM",
+                method: "ANIMATION_STRONG_EASE_OUT",
+                sequence: "ANIMATION_BY_NODE",
+                speed: 275,
+              },
+            },
+            series: [
+              {
+                // plot 1 values, linear data
+                values: mouse_clicks,
+                text: "Clicks",
+                backgroundColor: "#BBDBB4",
+              },
+              {
+                // plot 2 values, linear data
+                values: keys_down,
+                text: "Keys Pressed",
+                backgroundColor: "#A64253",
+              },
+            ],
+          };
+          zingchart.render({
+            id: "twoBar",
+            data: twoBar,
             height: "100%",
             width: "100%",
           });
