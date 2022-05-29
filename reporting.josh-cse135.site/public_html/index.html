@@ -255,8 +255,8 @@
           let keys_down = [];
           activity_data.map((row) => {
             twoBarXLabel.push(row["created"]);
-            mouse_clicks.push(row["mouse_clicks"]);
-            keys_down.push(row["keys_down"]);
+            mouse_clicks.push(parseInt(row["mouse_clicks"]));
+            keys_down.push(parseInt(row["keys_down"]));
           });
           const twoBar = {
             type: "bar",
