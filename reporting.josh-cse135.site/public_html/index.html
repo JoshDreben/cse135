@@ -121,6 +121,11 @@
       input:focus {
         outline: none;
       }
+      #chart-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+      }
     </style>
   </head>
 
@@ -136,8 +141,10 @@
       >User Management</a
     >
     <div id="fast-data"></div>
-    <div id="pie" class="chart--container"></div>
-    <div id="twoBar" class="chart--container"></div>
+    <div id="chart-wrap">
+      <div id="twoBar" class="chart--container"></div>
+      <div id="pie" class="chart--container"></div>
+    </div>
   </body>
   <script>
     ZC.LICENSE = [
