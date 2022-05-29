@@ -19,14 +19,23 @@
 
 	$day_range = $_GET["day_range"];
 	$sql = "CALL call_dashboard($day_range)";
-	$stmt = $con->query($sql);
+	$stmt = $con->prepare($sql);
+	$stmt->execute();
 	$emparray = array();
-	do {
-		$rows = $stmt->fetchAll(PDO::FETCH_NUM);
-		if ($rows) {
-			$emparray[] = $rows;
-		}
-	 } while ($stmt->nextRowset());
+	$res = $con->use_result();
+	while ($row = mysqli_fetch_assoc($res))
+	{
+		$emparray[] = $row;
+	}
 	$dashboard = $emparray;
-	echo json_encode($dashboard);
+	$json_res["dash"] = $dashboard;
+	$emparray = arrary();
+	$res = $con->use_result();
+	while ($row = mysqli_fetch_assoc($res))
+	{
+		$emparray[] = $row;
+	}
+	$activity = $emparray;
+	$json_res["activity"] = $activity;
+	echo json_encode($json_res);
 ?>
