@@ -91,7 +91,7 @@
       }
       #day-range {
         margin-left: 0.5rem;
-        width: 50px;
+        width: 40px;
         background-color: none;
         border: none;
         border-bottom: 2px black solid;
@@ -101,6 +101,10 @@
         width: 100%;
         display: flex;
         align-items: center;
+      }
+
+      #day-pickr > p {
+        margin-left: 10px;
       }
 
       #pie {
@@ -113,7 +117,7 @@
     <button id="logout">Log Out</button>
     <h1 id="title">Reporting Dashboard</h1>
     <div id="day-pickr">
-      <label for="day-range">Showing The Past:</label>
+      <label for="day-range">Showing The Past </label>
       <input name="day-range" type="text" maxlength="5" id="day-range" />
       <p>Days</p>
     </div>
