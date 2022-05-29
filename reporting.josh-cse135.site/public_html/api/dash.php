@@ -19,8 +19,7 @@
 
 	$day_range = $_GET["day_range"];
 	$sql = "CALL call_dashboard($day_range)";
-	$res = $con->query($sql);
-	echo json_encode($res);
+	$stmt = $con->query($sql);
 	$emparray = array();
 	do {
 		$rows = $stmt->fetchAll(PDO::FETCH_NUM);
