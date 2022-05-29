@@ -22,10 +22,12 @@
 	$res = $con->query($sql);
 	echo json_encode($res);
 	$emparray = array();
-	while ($row = mysqli_fetch_assoc($res))
-	{
-		$emparray[] = $row;
-	}
+	do {
+		$rows = $stmt->fetchAll(PDO::FETCH_NUM);
+		if ($rows) {
+			$emparray[] = $rows;
+		}
+	 } while ($stmt->nextRowset());
 	$dashboard = $emparray;
 	echo json_encode($dashboard);
 ?>
