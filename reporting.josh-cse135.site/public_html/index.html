@@ -169,8 +169,7 @@
         }
       ).then((res) =>
         res.json().then((json_res) => {
-          console.log(json_res);
-          dash_data = json_res[1];
+          dash_data = json_res[0];
           let sessionCnt = document.createElement("p");
 
           fastData.innerHTML = "";
