@@ -27,7 +27,7 @@
 		$emparray[] = $row;
 	}
 	$dashboard = $emparray;
-	$json_res["dash"] = $dashboard;
+	$json_res["activity"] = $dashboard;
 	$con->next_result();
 	$res = $con->store_result();
 	$emparray = array();
@@ -36,6 +36,6 @@
 		$emparray[] = $row;
 	}
 	$activity = $emparray;
-	$json_res["activity"] = $activity;
+	$json_res["dash"] = $activity;
 	echo json_encode($json_res);
 ?>
