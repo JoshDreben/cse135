@@ -152,6 +152,9 @@
       var day_range = day;
       var dash_data = null;
       let fastData = document.getElementById("fast-data");
+
+      let inputRange = document.getElementById("day-range");
+      inputRange.value = day;
       fetch(
         `https://reporting.josh-cse135.site/api/dash?day_range=${day_range}`,
         {
