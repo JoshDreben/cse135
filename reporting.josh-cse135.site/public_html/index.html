@@ -150,6 +150,7 @@
     <div id="chart-wrap">
       <div id="twoBar" class="chart--container"></div>
       <div id="pie" class="chart--container"></div>
+      <div id="idelTimeouts" class="chart--container"></div>
     </div>
   </body>
   <script>
@@ -325,6 +326,54 @@
           zingchart.render({
             id: "twoBar",
             data: twoBar,
+            height: "100%",
+            width: "100%",
+          });
+          const idleTimeoutChart = {
+            type: "line",
+            title: {
+              text: "Idle Timeouts",
+              fontSize: 16,
+              color: "#000000",
+            },
+            legend: {
+              draggable: false,
+            },
+            scaleX: {
+              // set scale label
+              label: {
+                text: "Days",
+              },
+              // convert text on scale indices
+              labels: twoBarXLabel,
+            },
+            scaleY: {
+              // scale label with unicode character
+              label: {
+                text: "Count",
+              },
+            },
+            plot: {
+              // animation docs here:
+              // https://www.zingchart.com/docs/tutorials/design-and-styling/chart-animation/#animation__effect
+              animation: {
+                effect: "ANIMATION_EXPAND_BOTTOM",
+                method: "ANIMATION_STRONG_EASE_OUT",
+                sequence: "ANIMATION_BY_NODE",
+                speed: 275,
+              },
+            },
+            series: [
+              {
+                values: idleTimeouts,
+                text: "Idle Timeouts",
+                backgroundColor: "#abcdef",
+              },
+            ],
+          };
+          zingchart.render({
+            id: "idleTimeouts",
+            data: idleTimeoutChart,
             height: "100%",
             width: "100%",
           });
