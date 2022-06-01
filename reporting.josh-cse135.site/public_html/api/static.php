@@ -73,7 +73,7 @@
 		echo json_encode($json_res);
 		exit();
 	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && (!isset($_GET["id"]) || empty($_GET["id"]))) {
-		$sql = "SELECT  screen_width, screen_height FROM static";
+		$sql = "SELECT  user_agent, screen_width, screen_height FROM static";
 		$res = $con->query($sql);
 		$emparray = array();
 		while ($row = mysqli_fetch_assoc($res))
@@ -83,7 +83,7 @@
 		$json_res = $emparray;
 	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 		$id = $_GET["id"];
-		$sql = "SELECT  screen_width, screen_height FROM static WHERE sid=$id";
+		$sql = "SELECT  user_agent, screen_width, screen_height FROM static WHERE sid=$id";
 		$res = $con->query($sql);
 		$emparray = array();
 		while ($row = mysqli_fetch_assoc($res))
