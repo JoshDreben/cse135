@@ -9,6 +9,7 @@
       nonce="undefined"
       src="https://cdn.zingchart.com/zingchart.min.js"
     ></script>
+    <script src="https://cdn.zinggrid.com/dev/zinggrid-dev.min.js"></script>
     <script src="./auth.js"></script>
     <noscript>
       <meta http-equiv="refresh" content="100; URL=/login.html" />
@@ -46,8 +47,11 @@
   </head>
   <body>
     <h1>Machine Type Distribution Report</h1>
-    <h2>What machine type / dimensions should we cater to most?</h2>
+    <h2>What machine type & dimensions should we cater to most?</h2>
     <div id="pie" class="chart--container"></div>
+    <zing-grid caption="dimensions" layout="row" layout-controls>
+      <zg-data src="/api/static"></zg-data>
+    </zing-grid>
   </body>
   <script>
     function updateDash(day) {
