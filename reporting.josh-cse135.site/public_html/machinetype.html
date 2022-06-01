@@ -39,6 +39,7 @@
         }
       ).then((res) =>
         res.json().then((json_res) => {
+          dash_data = json_res["dash"];
           var totalMacintosh = parseInt(dash_data["num_mac"]);
           var totalWindows = parseInt(dash_data["num_win"]);
           var totalLinux = parseInt(dash_data["num_lin"]);
