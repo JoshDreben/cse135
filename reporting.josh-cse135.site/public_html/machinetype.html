@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine Type Report</title>
+    <script
+      nonce="undefined"
+      src="https://cdn.zingchart.com/zingchart.min.js"
+    ></script>
+    <script src="./auth.js"></script>
+    <noscript>
+      <meta http-equiv="refresh" content="100; URL=/login.html" />
+    </noscript>
+    <style>
+      .chart--container {
+        height: 400px;
+        width: 500px;
+      }
+
+      .zc-ref {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Machine Type Distribution Report</h1>
+    <div id="pie" class="chart--container"></div>
+  </body>
+  <script>
+    function updateDash(day) {
+      var day_range = day;
+      var dash_data = null;
+      fetch(
+        `https://reporting.josh-cse135.site/api/dash?day_range=${day_range}`,
+        {
+          method: "GET",
+        }
+      ).then((res) =>
+        res.json().then((json_res) => {
+          var totalMacintosh = parseInt(dash_data["num_mac"]);
+          var totalWindows = parseInt(dash_data["num_win"]);
+          var totalLinux = parseInt(dash_data["num_lin"]);
+          var pie = {
+            type: "pie",
+            plot: {
+              borderColor: "#2B313B",
+              borderWidth: 5,
+              // slice: 90,
+              valueBox: {
+                placement: "out",
+                text: "%t\n%npv%",
+                fontFamily: "Open Sans",
+              },
+              tooltip: {
+                fontSize: "18",
+                fontFamily: "Open Sans",
+                padding: "5 10",
+                text: "%npv%",
+              },
+              animation: {
+                effect: 2,
+                method: 5,
+                speed: 900,
+                sequence: 1,
+                delay: 3000,
+              },
+            },
+            title: {
+              fontColor: "#000000",
+              text: "User Machine Type Distribution",
+              align: "left",
+              fontFamily: "Open Sans",
+              fontSize: 16,
+            },
+            series: [
+              {
+                values: [
+                  totalMacintosh / (totalMacintosh + totalWindows + totalLinux),
+                ],
+                text: "Macintosh",
+                backgroundColor: "#50ADF5",
+              },
+              {
+                values: [
+                  totalWindows / (totalMacintosh + totalWindows + totalLinux),
+                ],
+                text: "Windows",
+                backgroundColor: "#FF7965",
+              },
+              {
+                values: [
+                  totalLinux / (totalMacintosh + totalWindows + totalLinux),
+                ],
+                text: "Linux",
+                backgroundColor: "#13C4A3",
+              },
+            ],
+          };
+
+          zingchart.render({
+            id: "pie",
+            data: pie,
+            height: "100%",
+            width: "100%",
+          });
+        })
+      );
+    }
+    updateDash(9999);
+  </script>
+</html>
