@@ -83,7 +83,7 @@
 		$json_res = $emparray;
 	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET["id"])) {
 		$id = $_GET["id"];
-		$sql = "SELECT window_inner_width, window_inner_height, window_outer_width, window_outer_height, screen_width, screen_height FROM static WHERE sid=$id";
+		$sql = "SELECT  screen_width, screen_height FROM static WHERE sid=$id";
 		$res = $con->query($sql);
 		$emparray = array();
 		while ($row = mysqli_fetch_assoc($res))
