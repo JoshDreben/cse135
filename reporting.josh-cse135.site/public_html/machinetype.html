@@ -40,6 +40,9 @@
         width: 500px;
       }
 
+      .grid {
+        width: 500px;
+      }
       .zc-ref {
         display: none;
       }
@@ -49,7 +52,7 @@
     <h1>Machine Type Distribution Report</h1>
     <h2>What machine type & dimensions should we cater to most?</h2>
     <div id="pie" class="chart--container"></div>
-    <zing-grid caption="dimensions" layout="row">
+    <zing-grid caption="dimensions" class="grid" layout="row">
       <zg-data src="/api/static.php"></zg-data>
     </zing-grid>
   </body>
