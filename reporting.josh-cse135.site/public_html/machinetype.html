@@ -63,7 +63,6 @@
     <div class="data-wrap">
       <div id="pie" class="chart--container"></div>
       <zing-grid
-        sort
         theme="ios"
         caption="Dimensions"
         pager
@@ -72,6 +71,7 @@
         layout="row"
       >
         <zg-data src="/api/static.php"></zg-data>
+        <zg-column index="screen_width" sort-asc="true"></zg-column>
       </zing-grid>
     </div>
   </body>
